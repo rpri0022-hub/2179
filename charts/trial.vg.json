@@ -1,0 +1,33 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 300,
+  "data": { "url": "../datasets/nom_australia.csv" },
+  "transform": [
+      {
+        "fold": ["2004-05","2005-06","2006-07","2007-08","2008-09",
+                "2009-10","2010-11","2011-12","2012-13","2013-14",
+                "2014-15","2015-16","2016-17","2017-18","2018-19",
+                "2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"],
+        "as": ["year", "nom"]
+      },
+      {
+        "calculate": "toNumber(replace(datum.nom, ' ', ''))",
+        "as": "nom"
+      },
+      {
+        "filter": "datum['Country of birth(d)'] == 'India' || datum['Country of birth(d)'] == 'China' || datum['Country of birth(d)'] == 'UK, CIs & IOM' || datum['Country of birth(d)'] == 'Philippines' || datum['Country of birth(d)'] == 'Nepal'"
+      }
+    ],
+  "mark": { "type": "line", "point": true },
+  "encoding": {
+    "x": { "field": "year", "type": "ordinal", "title": "Year" },
+    "y": { "field": "nom", "type": "quantitative", "title": "Net Overseas Migration" },
+    "color": { "field": "Country of birth(d)", "type": "nominal" },
+    "tooltip": [
+      { "field": "Country of birth(d)", "title": "Country" },
+      { "field": "year", "title": "Year" },
+      { "field": "nom", "title": "NOM" }
+    ]
+  }
+}
