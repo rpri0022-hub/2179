@@ -1,0 +1,108 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 300,
+  "data": { "url": "../datasets/nom_australia.csv" },
+  "transform": [
+    {
+      "filter": "datum['Country of birth(d)'] == 'Total'"
+    },
+    {
+      "fold": [
+        "2004-05","2005-06","2006-07","2007-08","2008-09",
+        "2009-10","2010-11","2011-12","2012-13","2013-14",
+        "2014-15","2015-16","2016-17","2017-18","2018-19",
+        "2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"
+      ],
+      "as": ["year", "nom"]
+    },
+    {
+      "calculate": "toNumber(replace(datum.nom, ' ', ''))",
+      "as": "nom"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "color": "#1d6b72",
+        "opacity": 0.3,
+        "line": {"color": "#1d6b72", "strokeWidth": 2.5}
+      },
+      "data": {
+        "values": [
+          {"start": "2019-20", "end": "2021-22"}
+        ]
+      },
+      "encoding": {
+        "x": {"field": "start", "type": "ordinal"},
+        "x2": {"field": "end"}
+      }
+    },
+    {
+      "mark": {
+        "type": "area",
+        "line": {"color": "#1d6b72", "strokeWidth": 2.5},
+        "color": {
+          "x1": 1, "y1": 1, "x2": 1, "y2": 0,
+          "gradient": "linear",
+          "stops": [
+            {"offset": 0, "color": "rgba(29,107,114,0)"},
+            {"offset": 1, "color": "rgba(29,107,114,0.25)"}
+          ]
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "title": null,
+          "axis": {"labelAngle": -45, "labelFontSize": 10}
+        },
+        "y": {
+          "field": "nom",
+          "type": "quantitative",
+          "title": "Net Overseas Migration",
+          "axis": {"labelFontSize": 10, "format": ",d"}
+        },
+        "tooltip": [
+          {"field": "year", "title": "Year"},
+          {"field": "nom", "title": "NOM", "format": ",d"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": -12,
+        "fontSize": 10,
+        "color": "#c8963e",
+        "fontWeight": "bold"
+      },
+      "data": {
+        "values": [{"year": "2022-23", "nom": 538340, "label": "538k - record"}]
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "nom", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "dy": 2,
+        "fontSize": 10,
+        "color": "#a63d2f"
+      },
+      "data": {
+        "values": [{"year": "2020-21", "nom": -84940, "label": "COVID: -85k"}]
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "nom", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    }
+  ]
+}

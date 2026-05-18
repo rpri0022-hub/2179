@@ -1,0 +1,69 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": "container",
+  "height": 250,
+  "data": {
+    "values": [
+      {"year":"2004-05","arrivals":341400,"departures":198820},
+      {"year":"2005-06","arrivals":376530,"departures":204690},
+      {"year":"2006-07","arrivals":452390,"departures":219590},
+      {"year":"2007-08","arrivals":526510,"departures":249170},
+      {"year":"2008-09","arrivals":546380,"departures":246510},
+      {"year":"2009-10","arrivals":380090,"departures":184030},
+      {"year":"2010-11","arrivals":347990,"departures":167620},
+      {"year":"2011-12","arrivals":420210,"departures":188260},
+      {"year":"2012-13","arrivals":413310,"departures":183980},
+      {"year":"2013-14","arrivals":373350,"departures":185570},
+      {"year":"2014-15","arrivals":360540,"departures":176510},
+      {"year":"2015-16","arrivals":378690,"departures":172460},
+      {"year":"2016-17","arrivals":441290,"departures":177940},
+      {"year":"2017-18","arrivals":419610,"departures":181390},
+      {"year":"2018-19","arrivals":419280,"departures":177940},
+      {"year":"2019-20","arrivals":374160,"departures":181460},
+      {"year":"2020-21","arrivals":107530,"departures":192470},
+      {"year":"2021-22","arrivals":379550,"departures":171640},
+      {"year":"2022-23","arrivals":737530,"departures":199190},
+      {"year":"2023-24","arrivals":660570,"departures":231410},
+      {"year":"2024-25","arrivals":568000,"departures":262430}
+    ]
+  },
+  "transform": [
+    {
+      "fold": ["arrivals", "departures"],
+      "as": ["type", "value"]
+    }
+  ],
+  "mark": {
+    "type": "area",
+    "opacity": 0.6
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": null,
+      "axis": {"labelAngle": -45, "labelFontSize": 10}
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "People",
+      "stack": null,
+      "axis": {"labelFontSize": 10, "format": ",d"}
+    },
+    "color": {
+      "field": "type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["arrivals", "departures"],
+        "range": ["#1d6b72", "#c8963e"]
+      },
+      "legend": {"title": null}
+    },
+    "tooltip": [
+      {"field": "year", "title": "Year"},
+      {"field": "type", "title": "Type"},
+      {"field": "value", "title": "People", "format": ",d"}
+    ]
+  }
+}

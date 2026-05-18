@@ -3,7 +3,6 @@
 <head>
   <title>Australian Migration</title>
 
-  <!-- These 3 lines load Vega-Lite — WITHOUT these nothing works -->
   <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
@@ -11,14 +10,40 @@
 </head>
 <body>
 
-  <div id="chart1"></div>
+  <h2>Net Overseas Migration, Australia 2004-2025</h2>
+  <div id="chart1" style="width:100%;"></div>
+
+  <h2>Arrivals vs Departures, Australia 2004-2025</h2>
+  <div id="chart2" style="width:100%;"></div>
+
+  <h2>NOM as % of Population</h2>
+  <div id="chart3" style="width:100%;"></div>
+
+  <h2>Who Makes Up NOM? (2004–2025)</h2>
+  <div id="chart4" style="width:100%;"></div>
 
   <script>
-    var chart1 = "charts/trial.vg.json";
+    var chart1 = "charts/chart1.vg.json";
     vegaEmbed("#chart1", chart1)
       .then(function(result) {})
       .catch(console.error);
+
+    var chart2 = "charts/chart2.vg.json";
+    vegaEmbed("#chart2", chart2)
+      .then(function(result) {})
+      .catch(console.error);
+
+    var chart3 = "charts/chart3.vg.json";
+    vegaEmbed("#chart3", chart3)
+      .then(function(result) {})
+      .catch(console.error);
+    
+    var chart4 = "charts/chart4.vg.json";
+    vegaEmbed("#chart4", chart4)
+      .then(function(result) {})
+      .catch(console.error);
   </script>
+  
 
 </body>
 </html>

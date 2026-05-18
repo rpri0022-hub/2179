@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 350,
+  "height": 350,
+  "data": {
+    "values": [
+      {"category": "Temporary student", "pct": 27},
+      {"category": "Skilled", "pct": 22},
+      {"category": "Working holiday", "pct": 18},
+      {"category": "Family", "pct": 15},
+      {"category": "Other", "pct": 18}
+    ]
+  },
+  "transform": [
+    {
+      "calculate": "datum.pct + '%'",
+      "as": "pct_label"
+    }
+  ],
+  "layer": [
+    {
+      "mark": {"type": "arc", "innerRadius": 80, "outerRadius": 140},
+      "encoding": {
+        "theta": {"field": "pct", "type": "quantitative"},
+        "color": {
+          "field": "category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Temporary student","Skilled","Working holiday","Family","Other"
+            ],
+            "range": ["#1d6b72","#c8963e","#a63d2f","#2c3e50","#9b9286"]
+          },
+          "legend": {"title": "Visa category", "labelFontSize": 12}
+        },
+        "tooltip": [
+          {"field": "category", "title": "Visa type"},
+          {"field": "pct", "title": "%"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "radius": 110,
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "color": "white"
+      },
+      "encoding": {
+        "theta": {
+          "field": "pct",
+          "type": "quantitative",
+          "stack": true
+        },
+        "text": {
+          "field": "pct_label",
+          "type": "nominal"
+        }
+      }
+    }
+  ]
+}
