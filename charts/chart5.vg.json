@@ -1,0 +1,241 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bump chart of top 6 source countries by net migration rank, 2005-06 to 2024-25.",
+  "width": "container",
+  "height": 380,
+  "background": "transparent",
+  "padding": {"left": 90, "right": 100, "top": 20, "bottom": 40},
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "grid": false,
+      "domainColor": "#d8cdb8",
+      "tickColor": "#d8cdb8"
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {"country":"UK","year":2005,"value":22470,"rank":1},
+      {"country":"India","year":2005,"value":21820,"rank":2},
+      {"country":"China","year":2005,"value":19970,"rank":3},
+      {"country":"New Zealand","year":2005,"value":18090,"rank":4},
+      {"country":"Philippines","year":2005,"value":6650,"rank":5},
+      {"country":"Nepal","year":2005,"value":930,"rank":6},
+
+      {"country":"India","year":2006,"value":37080,"rank":1},
+      {"country":"China","year":2006,"value":27880,"rank":2},
+      {"country":"UK","year":2006,"value":27690,"rank":3},
+      {"country":"New Zealand","year":2006,"value":22100,"rank":4},
+      {"country":"Philippines","year":2006,"value":9370,"rank":5},
+      {"country":"Nepal","year":2006,"value":4130,"rank":6},
+
+      {"country":"India","year":2007,"value":49780,"rank":1},
+      {"country":"China","year":2007,"value":36340,"rank":2},
+      {"country":"UK","year":2007,"value":31720,"rank":3},
+      {"country":"New Zealand","year":2007,"value":27730,"rank":4},
+      {"country":"Philippines","year":2007,"value":11900,"rank":5},
+      {"country":"Nepal","year":2007,"value":7960,"rank":6},
+
+      {"country":"India","year":2008,"value":59960,"rank":1},
+      {"country":"China","year":2008,"value":33590,"rank":2},
+      {"country":"UK","year":2008,"value":33410,"rank":3},
+      {"country":"New Zealand","year":2008,"value":23150,"rank":4},
+      {"country":"Philippines","year":2008,"value":12110,"rank":5},
+      {"country":"Nepal","year":2008,"value":11250,"rank":6},
+
+      {"country":"UK","year":2009,"value":30030,"rank":1},
+      {"country":"China","year":2009,"value":28340,"rank":2},
+      {"country":"India","year":2009,"value":24060,"rank":3},
+      {"country":"New Zealand","year":2009,"value":15780,"rank":4},
+      {"country":"Philippines","year":2009,"value":9030,"rank":5},
+      {"country":"Nepal","year":2009,"value":2740,"rank":6},
+
+      {"country":"New Zealand","year":2010,"value":29040,"rank":1},
+      {"country":"UK","year":2010,"value":20860,"rank":2},
+      {"country":"China","year":2010,"value":17680,"rank":3},
+      {"country":"Philippines","year":2010,"value":9620,"rank":4},
+      {"country":"India","year":2010,"value":9230,"rank":5},
+      {"country":"Nepal","year":2010,"value":740,"rank":6},
+
+      {"country":"New Zealand","year":2011,"value":34540,"rank":1},
+      {"country":"UK","year":2011,"value":24820,"rank":2},
+      {"country":"India","year":2011,"value":18760,"rank":3},
+      {"country":"China","year":2011,"value":15510,"rank":4},
+      {"country":"Philippines","year":2011,"value":14550,"rank":5},
+      {"country":"Nepal","year":2011,"value":2080,"rank":6},
+
+      {"country":"UK","year":2012,"value":31430,"rank":1},
+      {"country":"New Zealand","year":2012,"value":24740,"rank":2},
+      {"country":"India","year":2012,"value":23670,"rank":3},
+      {"country":"China","year":2012,"value":22580,"rank":4},
+      {"country":"Philippines","year":2012,"value":14210,"rank":5},
+      {"country":"Nepal","year":2012,"value":3180,"rank":6},
+
+      {"country":"India","year":2013,"value":33340,"rank":1},
+      {"country":"China","year":2013,"value":30800,"rank":2},
+      {"country":"UK","year":2013,"value":25020,"rank":3},
+      {"country":"Philippines","year":2013,"value":12830,"rank":4},
+      {"country":"Nepal","year":2013,"value":7310,"rank":5},
+      {"country":"New Zealand","year":2013,"value":7240,"rank":6},
+
+      {"country":"China","year":2014,"value":39070,"rank":1},
+      {"country":"India","year":2014,"value":38400,"rank":2},
+      {"country":"Philippines","year":2014,"value":12430,"rank":3},
+      {"country":"UK","year":2014,"value":12260,"rank":4},
+      {"country":"Nepal","year":2014,"value":6410,"rank":5},
+      {"country":"New Zealand","year":2014,"value":930,"rank":6},
+
+      {"country":"China","year":2015,"value":45480,"rank":1},
+      {"country":"India","year":2015,"value":40860,"rank":2},
+      {"country":"Philippines","year":2015,"value":13000,"rank":3},
+      {"country":"UK","year":2015,"value":9400,"rank":4},
+      {"country":"Nepal","year":2015,"value":7970,"rank":5},
+      {"country":"New Zealand","year":2015,"value":1480,"rank":6},
+
+      {"country":"China","year":2016,"value":50020,"rank":1},
+      {"country":"India","year":2016,"value":49730,"rank":2},
+      {"country":"Nepal","year":2016,"value":14880,"rank":3},
+      {"country":"Philippines","year":2016,"value":13590,"rank":4},
+      {"country":"UK","year":2016,"value":9140,"rank":5},
+      {"country":"New Zealand","year":2016,"value":1850,"rank":6},
+
+      {"country":"India","year":2017,"value":55860,"rank":1},
+      {"country":"China","year":2017,"value":44610,"rank":2},
+      {"country":"Nepal","year":2017,"value":21000,"rank":3},
+      {"country":"Philippines","year":2017,"value":12620,"rank":4},
+      {"country":"UK","year":2017,"value":10460,"rank":5},
+      {"country":"New Zealand","year":2017,"value":3010,"rank":6},
+
+      {"country":"India","year":2018,"value":73190,"rank":1},
+      {"country":"Nepal","year":2018,"value":24060,"rank":2},
+      {"country":"China","year":2018,"value":20170,"rank":3},
+      {"country":"Philippines","year":2018,"value":18400,"rank":4},
+      {"country":"UK","year":2018,"value":7830,"rank":5},
+      {"country":"New Zealand","year":2018,"value":3330,"rank":6},
+
+      {"country":"India","year":2019,"value":59810,"rank":1},
+      {"country":"Philippines","year":2019,"value":15350,"rank":2},
+      {"country":"Nepal","year":2019,"value":13340,"rank":3},
+      {"country":"UK","year":2019,"value":7440,"rank":4},
+      {"country":"New Zealand","year":2019,"value":-360,"rank":5},
+      {"country":"China","year":2019,"value":-18590,"rank":6},
+
+      {"country":"UK","year":2020,"value":10670,"rank":1},
+      {"country":"Philippines","year":2020,"value":1080,"rank":2},
+      {"country":"Nepal","year":2020,"value":-2090,"rank":3},
+      {"country":"New Zealand","year":2020,"value":-2150,"rank":4},
+      {"country":"India","year":2020,"value":-10650,"rank":5},
+      {"country":"China","year":2020,"value":-50270,"rank":6},
+
+      {"country":"India","year":2021,"value":43570,"rank":1},
+      {"country":"Nepal","year":2021,"value":21020,"rank":2},
+      {"country":"China","year":2021,"value":15100,"rank":3},
+      {"country":"Philippines","year":2021,"value":12930,"rank":4},
+      {"country":"New Zealand","year":2021,"value":5370,"rank":5},
+      {"country":"UK","year":2021,"value":-960,"rank":6},
+
+      {"country":"India","year":2022,"value":95030,"rank":1},
+      {"country":"China","year":2022,"value":59570,"rank":2},
+      {"country":"Philippines","year":2022,"value":43330,"rank":3},
+      {"country":"Nepal","year":2022,"value":28020,"rank":4},
+      {"country":"New Zealand","year":2022,"value":15950,"rank":5},
+      {"country":"UK","year":2022,"value":2760,"rank":6},
+
+      {"country":"India","year":2023,"value":70130,"rank":1},
+      {"country":"China","year":2023,"value":46580,"rank":2},
+      {"country":"Philippines","year":2023,"value":31670,"rank":3},
+      {"country":"New Zealand","year":2023,"value":22910,"rank":4},
+      {"country":"UK","year":2023,"value":19550,"rank":5},
+      {"country":"Nepal","year":2023,"value":18160,"rank":6},
+
+      {"country":"India","year":2024,"value":57410,"rank":1},
+      {"country":"China","year":2024,"value":35160,"rank":2},
+      {"country":"New Zealand","year":2024,"value":24320,"rank":3},
+      {"country":"UK","year":2024,"value":23550,"rank":4},
+      {"country":"Philippines","year":2024,"value":19440,"rank":5},
+      {"country":"Nepal","year":2024,"value":16310,"rank":6}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "strokeWidth": 2.6,
+        "point": {"size": 60, "filled": false, "strokeWidth": 2, "fill": "#f5efe0"}
+      },
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": null,
+            "labelExpr": "datum.value % 2 === 1 ? datum.value + '-' + slice(toString(datum.value + 1), 2, 4) : ''",
+            "labelAngle": -40
+          }
+        },
+        "y": {
+          "field": "rank",
+          "type": "quantitative",
+          "scale": {"reverse": true, "domain": [0.5, 6.5], "nice": false},
+          "axis": {
+            "title": null,
+            "values": [1, 2, 3, 4, 5, 6],
+            "tickCount": 6,
+            "labelFontSize": 14,
+            "labelFontWeight": 600,
+            "labelColor": "#2a2a2a",
+            "labelPadding": 120,
+            "domain": false,
+            "ticks": false,
+            "grid": true,
+            "gridColor": "#ece3d4",
+            "gridDash": [2, 3]
+          }
+        },
+        "color": {
+          "field": "country",
+          "type": "nominal",
+          "scale": {
+            "domain": ["India", "China", "UK", "New Zealand", "Philippines", "Nepal"],
+            "range": ["#c14a26", "#1e5f74", "#6b7960", "#a48b5e", "#d97a4f", "#3d8aa3"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "year", "type": "ordinal", "title": "Year"},
+          {"field": "rank", "type": "quantitative", "title": "Rank"},
+          {"field": "value", "type": "quantitative", "title": "Net migration", "format": ","}
+        ]
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year === 2005"}],
+      "mark": {"type": "text", "align": "right", "dx": -30, "fontSize": 12, "fontWeight": 600},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "rank", "type": "quantitative"},
+        "text": {"field": "country"},
+        "color": {"field": "country", "type": "nominal", "legend": null}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.year === 2024"}],
+      "mark": {"type": "text", "align": "left", "dx": 14, "fontSize": 12, "fontWeight": 600},
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "rank", "type": "quantitative"},
+        "text": {"field": "country"},
+        "color": {"field": "country", "type": "nominal", "legend": null}
+      }
+    }
+  ]
+}

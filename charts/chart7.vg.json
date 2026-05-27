@@ -1,0 +1,95 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Slope chart comparing pre-COVID and post-COVID three-year averages for the top 8 source countries.",
+  "width": "container",
+  "height": 460,
+  "background": "transparent",
+  "padding": {"left": 10, "right": 10, "top": 20, "bottom": 20},
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#2a2a2a",
+      "titleColor": "#2a2a2a",
+      "grid": false,
+      "domain": false,
+      "ticks": false
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {"country": "India",         "period": "Pre-COVID (avg 2017-2019)",  "value": 62953},
+      {"country": "India",         "period": "Post-COVID (avg 2022-2024)", "value": 74190},
+      {"country": "China",         "period": "Pre-COVID (avg 2017-2019)",  "value": 15397},
+      {"country": "China",         "period": "Post-COVID (avg 2022-2024)", "value": 47103},
+      {"country": "Philippines",   "period": "Pre-COVID (avg 2017-2019)",  "value": 15457},
+      {"country": "Philippines",   "period": "Post-COVID (avg 2022-2024)", "value": 31480},
+      {"country": "New Zealand",   "period": "Pre-COVID (avg 2017-2019)",  "value": 1993},
+      {"country": "New Zealand",   "period": "Post-COVID (avg 2022-2024)", "value": 21060},
+      {"country": "Nepal",         "period": "Pre-COVID (avg 2017-2019)",  "value": 19467},
+      {"country": "Nepal",         "period": "Post-COVID (avg 2022-2024)", "value": 20830},
+      {"country": "UK",            "period": "Pre-COVID (avg 2017-2019)",  "value": 8577},
+      {"country": "UK",            "period": "Post-COVID (avg 2022-2024)", "value": 15287},
+      {"country": "Vietnam",       "period": "Pre-COVID (avg 2017-2019)",  "value": 7533},
+      {"country": "Vietnam",       "period": "Post-COVID (avg 2022-2024)", "value": 16133},
+      {"country": "South Africa",  "period": "Pre-COVID (avg 2017-2019)",  "value": 5683},
+      {"country": "South Africa",  "period": "Post-COVID (avg 2022-2024)", "value": 8630}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {"type": "line", "strokeWidth": 2.4, "interpolate": "linear"},
+      "encoding": {
+        "x": {
+          "field": "period",
+          "type": "nominal",
+          "sort": ["Pre-COVID (avg 2017-2019)", "Post-COVID (avg 2022-2024)"],
+          "scale": {"padding": 0.05},
+          "axis": {"title": null, "labelFontWeight": 600, "labelPadding": 8, "labelAngle": 0}
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "axis": {"title": "Annual net migration (3-yr avg)", "format": ",.0f", "grid": true, "gridColor": "#ece3d4"}
+        },
+        "color": {
+          "field": "country",
+          "type": "nominal",
+          "scale": {
+            "domain": ["India", "China", "Philippines", "New Zealand", "Nepal", "UK", "Vietnam", "South Africa"],
+            "range": ["#c14a26", "#1e5f74", "#d97a4f", "#a48b5e", "#3d8aa3", "#6b7960", "#5e6b8a", "#d29b3a"]
+          },
+          "legend": null
+        },
+        "detail": {"field": "country"},
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "period", "type": "nominal", "title": "Period"},
+          {"field": "value", "type": "quantitative", "title": "Avg net migration", "format": ",.0f"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "circle", "size": 90, "opacity": 1},
+      "encoding": {
+        "x": {"field": "period", "type": "nominal", "sort": ["Pre-COVID (avg 2017-2019)", "Post-COVID (avg 2022-2024)"]},
+        "y": {"field": "value", "type": "quantitative"},
+        "color": {"field": "country", "type": "nominal", "legend": null}
+      }
+    },
+    {
+      "transform": [{"filter": "datum.period === 'Post-COVID (avg 2022-2024)'"}],
+      "mark": {"type": "text", "align": "left", "dx": 10, "fontSize": 11, "fontWeight": 600},
+      "encoding": {
+        "x": {"field": "period", "type": "nominal", "sort": ["Pre-COVID (avg 2017-2019)", "Post-COVID (avg 2022-2024)"]},
+        "y": {"field": "value", "type": "quantitative"},
+        "text": {"field": "country"},
+        "color": {"field": "country", "type": "nominal", "legend": null}
+      }
+    }
+  ]
+}

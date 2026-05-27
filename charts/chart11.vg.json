@@ -1,0 +1,180 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Net overseas migration per 1,000 residents by state, 2024-25. Derived by combining ABS Migration figures with ABS June 2024 Population estimates. Reveals that smaller territories receive a far larger relative share than their population would suggest.",
+  "width": 700,
+  "height": 320,
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 12,
+      "titleFontSize": 12,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "domainColor": "#d8cdb8",
+      "tickColor": "#d8cdb8",
+      "gridColor": "#ece3d4"
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "nom_overseas": 97270,
+        "nom_australian": -5700,
+        "nom_total": 91570,
+        "population": 8469600,
+        "per_1000": 10.81
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "nom_overseas": 92410,
+        "nom_australian": -4640,
+        "nom_total": 87770,
+        "population": 6981400,
+        "per_1000": 12.57
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "nom_overseas": 58730,
+        "nom_australian": -2990,
+        "nom_total": 55740,
+        "population": 5560500,
+        "per_1000": 10.02
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "nom_overseas": 19540,
+        "nom_australian": -810,
+        "nom_total": 18730,
+        "population": 1873000,
+        "per_1000": 10.0
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "nom_overseas": 42420,
+        "nom_australian": -2010,
+        "nom_total": 40410,
+        "population": 2981400,
+        "per_1000": 13.55
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "nom_overseas": 2970,
+        "nom_australian": -250,
+        "nom_total": 2720,
+        "population": 575700,
+        "per_1000": 4.72
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "nom_overseas": 3850,
+        "nom_australian": -240,
+        "nom_total": 3610,
+        "population": 256200,
+        "per_1000": 14.09
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "nom_overseas": 5410,
+        "nom_australian": -430,
+        "nom_total": 4980,
+        "population": 475300,
+        "per_1000": 10.48
+      }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "cornerRadiusEnd": 4,
+        "height": 22,
+        "color": "#1e5f74"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": "-x",
+          "axis": {
+            "title": null,
+            "labelLimit": 200
+          }
+        },
+        "x": {
+          "field": "per_1000",
+          "type": "quantitative",
+          "axis": {
+            "title": "Net migration per 1,000 residents",
+            "grid": true
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "nom_total",
+            "type": "quantitative",
+            "title": "Net migration",
+            "format": ","
+          },
+          {
+            "field": "population",
+            "type": "quantitative",
+            "title": "Population",
+            "format": ","
+          },
+          {
+            "field": "per_1000",
+            "type": "quantitative",
+            "title": "Per 1,000",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "dx": 6,
+        "fontSize": 11,
+        "fontWeight": 500,
+        "color": "#2a2a2a"
+      },
+      "encoding": {
+        "y": {
+          "field": "state",
+          "type": "nominal",
+          "sort": "-x"
+        },
+        "x": {
+          "field": "per_1000",
+          "type": "quantitative"
+        },
+        "text": {
+          "field": "per_1000",
+          "type": "quantitative",
+          "format": ".1f"
+        }
+      }
+    }
+  ]
+}

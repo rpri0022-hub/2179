@@ -1,108 +1,132 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Total Net Overseas Migration to Australia, 2004-05 to 2024-25. Hero chart showing the COVID collapse and unprecedented rebound.",
   "width": "container",
-  "height": 300,
-  "data": { "url": "../datasets/nom_australia.csv" },
+  "height": 360,
+  "background": "transparent",
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 12,
+      "titleFontSize": 13,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "grid": true,
+      "gridColor": "#ece3d4",
+      "domainColor": "#d8cdb8",
+      "tickColor": "#d8cdb8"
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {"year": 2004, "value": 142580},
+      {"year": 2005, "value": 171840},
+      {"year": 2006, "value": 232800},
+      {"year": 2007, "value": 277340},
+      {"year": 2008, "value": 299870},
+      {"year": 2009, "value": 196060},
+      {"year": 2010, "value": 180370},
+      {"year": 2011, "value": 231950},
+      {"year": 2012, "value": 230330},
+      {"year": 2013, "value": 187780},
+      {"year": 2014, "value": 184030},
+      {"year": 2015, "value": 206230},
+      {"year": 2016, "value": 263350},
+      {"year": 2017, "value": 238220},
+      {"year": 2018, "value": 241340},
+      {"year": 2019, "value": 192700},
+      {"year": 2020, "value": -84940},
+      {"year": 2021, "value": 207910},
+      {"year": 2022, "value": 538340},
+      {"year": 2023, "value": 429160},
+      {"year": 2024, "value": 305570}
+    ]
+  },
   "transform": [
-    {
-      "filter": "datum['Country of birth(d)'] == 'Total'"
-    },
-    {
-      "fold": [
-        "2004-05","2005-06","2006-07","2007-08","2008-09",
-        "2009-10","2010-11","2011-12","2012-13","2013-14",
-        "2014-15","2015-16","2016-17","2017-18","2018-19",
-        "2019-20","2020-21","2021-22","2022-23","2023-24","2024-25"
-      ],
-      "as": ["year", "nom"]
-    },
-    {
-      "calculate": "toNumber(replace(datum.nom, ' ', ''))",
-      "as": "nom"
-    }
+    {"calculate": "datum.year + '-' + slice(toString(datum.year + 1), 2, 4)", "as": "fy"}
   ],
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "quantitative",
+      "scale": {"domain": [2004, 2024], "nice": false},
+      "axis": {
+        "orient": "bottom",
+        "title": null,
+        "values": [2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024],
+        "labelExpr": "datum.value + '-' + slice(toString(datum.value + 1), 2, 4)",
+        "labelAngle": -40
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "axis": {
+        "title": "Net Overseas Migration (persons)",
+        "format": ",.0f",
+        "tickCount": 6
+      }
+    }
+  },
   "layer": [
     {
       "mark": {
         "type": "area",
-        "color": "#1d6b72",
-        "opacity": 0.3,
-        "line": {"color": "#1d6b72", "strokeWidth": 2.5}
-      },
-      "data": {
-        "values": [
-          {"start": "2019-20", "end": "2021-22"}
-        ]
-      },
-      "encoding": {
-        "x": {"field": "start", "type": "ordinal"},
-        "x2": {"field": "end"}
-      }
-    },
-    {
-      "mark": {
-        "type": "area",
-        "line": {"color": "#1d6b72", "strokeWidth": 2.5},
+        "interpolate": "monotone",
         "color": {
           "x1": 1, "y1": 1, "x2": 1, "y2": 0,
           "gradient": "linear",
           "stops": [
-            {"offset": 0, "color": "rgba(29,107,114,0)"},
-            {"offset": 1, "color": "rgba(29,107,114,0.25)"}
+            {"offset": 0, "color": "#c14a26", "opacity": 0.0},
+            {"offset": 1, "color": "#c14a26", "opacity": 0.25}
           ]
         }
-      },
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "interpolate": "monotone",
+        "color": "#c14a26",
+        "strokeWidth": 2.5
+      }
+    },
+    {
+      "mark": {"type": "point", "filled": true, "color": "#c14a26", "size": 55},
       "encoding": {
-        "x": {
-          "field": "year",
-          "type": "ordinal",
-          "title": null,
-          "axis": {"labelAngle": -45, "labelFontSize": 10}
-        },
-        "y": {
-          "field": "nom",
-          "type": "quantitative",
-          "title": "Net Overseas Migration",
-          "axis": {"labelFontSize": 10, "format": ",d"}
-        },
         "tooltip": [
-          {"field": "year", "title": "Year"},
-          {"field": "nom", "title": "NOM", "format": ",d"}
+          {"field": "fy", "type": "nominal", "title": "Year"},
+          {"field": "value", "type": "quantitative", "title": "Net migration", "format": ","}
         ]
       }
     },
     {
+      "data": {
+        "values": [
+          {"year": 2020, "value": -84940, "label": "COVID border closures"},
+          {"year": 2022, "value": 538340, "label": "Record post-pandemic rebound"}
+        ]
+      },
       "mark": {
         "type": "text",
-        "dy": -12,
-        "fontSize": 10,
-        "color": "#c8963e",
-        "fontWeight": "bold"
-      },
-      "data": {
-        "values": [{"year": "2022-23", "nom": 538340, "label": "538k - record"}]
+        "fontStyle": "italic",
+        "fontSize": 11,
+        "color": "#1a1a1a",
+        "dy": -14
       },
       "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "nom", "type": "quantitative"},
+        "x": {"field": "year", "type": "quantitative"},
+        "y": {"field": "value", "type": "quantitative"},
         "text": {"field": "label"}
       }
     },
     {
-      "mark": {
-        "type": "text",
-        "dy": 2,
-        "fontSize": 10,
-        "color": "#a63d2f"
-      },
-      "data": {
-        "values": [{"year": "2020-21", "nom": -84940, "label": "COVID: -85k"}]
-      },
-      "encoding": {
-        "x": {"field": "year", "type": "ordinal"},
-        "y": {"field": "nom", "type": "quantitative"},
-        "text": {"field": "label"}
-      }
+      "data": {"values": [{"y": 0}]},
+      "mark": {"type": "rule", "color": "#8b7e6c", "strokeDash": [3, 3]},
+      "encoding": {"y": {"field": "y", "type": "quantitative"}}
     }
   ]
 }

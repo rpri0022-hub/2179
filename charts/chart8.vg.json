@@ -1,0 +1,139 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Choropleth map of Australia showing net overseas migration per 1,000 residents by state and territory, 2024-25.",
+  "width": 720,
+  "height": 460,
+  "background": "#fdfbf6",
+  "padding": {"left": 170, "right": 20, "top": 20, "bottom": 20},
+  "config": {
+    "view": {"stroke": null},
+    "legend": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "orient": "bottom-left",
+      "gradientThickness": 12,
+      "gradientLength": 220,
+      "titleAnchor": "start"
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "projection": {
+    "type": "mercator",
+    "center": [134, -28],
+    "scale": 690
+  },
+
+  "datasets": {
+    "state_stats": [
+      {"state": "New South Wales",              "state_code": "NSW", "nom_overseas": 97270, "nom_australian": -5700, "nom_total": 91570, "population": 8469600, "per_1000": 10.81},
+      {"state": "Victoria",                     "state_code": "VIC", "nom_overseas": 92410, "nom_australian": -4640, "nom_total": 87770, "population": 6981400, "per_1000": 12.57},
+      {"state": "Queensland",                   "state_code": "QLD", "nom_overseas": 58730, "nom_australian": -2990, "nom_total": 55740, "population": 5560500, "per_1000": 10.02},
+      {"state": "South Australia",              "state_code": "SA",  "nom_overseas": 19540, "nom_australian": -810,  "nom_total": 18730, "population": 1873000, "per_1000": 10.00},
+      {"state": "Western Australia",            "state_code": "WA",  "nom_overseas": 42420, "nom_australian": -2010, "nom_total": 40410, "population": 2981400, "per_1000": 13.55},
+      {"state": "Tasmania",                     "state_code": "TAS", "nom_overseas": 2970,  "nom_australian": -250,  "nom_total": 2720,  "population": 575700,  "per_1000": 4.72},
+      {"state": "Northern Territory",           "state_code": "NT",  "nom_overseas": 3850,  "nom_australian": -240,  "nom_total": 3610,  "population": 256200,  "per_1000": 14.09},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "nom_overseas": 5410,  "nom_australian": -430,  "nom_total": 4980,  "population": 475300,  "per_1000": 10.48}
+    ],
+    "label_positions_code": [
+      {"state": "New South Wales",              "lon": 147.5, "lat": -32.8},
+      {"state": "Victoria",                     "lon": 144.5, "lat": -37.0},
+      {"state": "Queensland",                   "lon": 144.5, "lat": -22.5},
+      {"state": "Western Australia",            "lon": 122.0, "lat": -25.5},
+      {"state": "South Australia",              "lon": 135.5, "lat": -30.0},
+      {"state": "Tasmania",                     "lon": 146.7, "lat": -42.0},
+      {"state": "Northern Territory",           "lon": 133.5, "lat": -19.5},
+      {"state": "Australian Capital Territory", "lon": 152.5, "lat": -35.3}
+    ],
+    "label_positions_number": [
+      {"state": "New South Wales",              "lon": 147.5, "lat": -33.7},
+      {"state": "Victoria",                     "lon": 144.5, "lat": -37.7},
+      {"state": "Queensland",                   "lon": 144.5, "lat": -23.4},
+      {"state": "Western Australia",            "lon": 122.0, "lat": -26.4},
+      {"state": "South Australia",              "lon": 135.5, "lat": -30.9},
+      {"state": "Tasmania",                     "lon": 146.7, "lat": -42.9},
+      {"state": "Northern Territory",           "lon": 133.5, "lat": -20.4},
+      {"state": "Australian Capital Territory", "lon": 152.5, "lat": -36.2}
+    ]
+  },
+
+  "layer": [
+    {
+      "data": {
+        "url": "data/states.geojson",
+        "format": {"type": "json", "property": "features"}
+      },
+      "transform": [
+        {
+          "lookup": "properties.STATE_NAME",
+          "from": {
+            "data": {"name": "state_stats"},
+            "key": "state",
+            "fields": ["state_code", "nom_overseas", "nom_total", "per_1000", "population"]
+          }
+        }
+      ],
+      "mark": {"type": "geoshape", "stroke": "#fdfbf6", "strokeWidth": 1.6},
+      "encoding": {
+        "color": {
+          "field": "per_1000",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [6, 10.3, 10.7, 11.5, 13.0, 14.0],
+            "range": ["#f6e5d3", "#f0b893", "#e89569", "#dd6e3d", "#c14a26", "#922f17", "#5a1d0e"]
+          },
+          "legend": {"title": "NOM per 1,000 residents", "format": ".1f", "offset": -40}
+        },
+        "tooltip": [
+          {"field": "properties.STATE_NAME", "type": "nominal", "title": "State"},
+          {"field": "nom_total",  "type": "quantitative", "title": "Net migration 2024-25", "format": ","},
+          {"field": "population", "type": "quantitative", "title": "Population (Jun 2024)", "format": ","},
+          {"field": "per_1000",   "type": "quantitative", "title": "Per 1,000 residents",   "format": ".2f"}
+        ]
+      }
+    },
+
+    {
+      "data": {"name": "label_positions_code"},
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {"name": "state_stats"},
+            "key": "state",
+            "fields": ["state_code", "per_1000"]
+          }
+        }
+      ],
+      "mark": {"type": "text", "fontSize": 11, "fontWeight": 700, "color": "#1a1a1a"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "state_code"}
+      }
+    },
+
+    {
+      "data": {"name": "label_positions_number"},
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {"name": "state_stats"},
+            "key": "state",
+            "fields": ["per_1000"]
+          }
+        },
+        {"calculate": "format(datum.per_1000, '.1f')", "as": "label"}
+      ],
+      "mark": {"type": "text", "fontSize": 10, "color": "#000000"},
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
+    }
+  ]
+}

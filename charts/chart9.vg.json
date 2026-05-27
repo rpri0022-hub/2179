@@ -1,0 +1,141 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Top 3 source countries per Australian state and territory by net migration, 2024-25.",
+  "width": 600,
+  "background": "transparent",
+  "padding": {"left": 10, "right": 30, "top": 10, "bottom": 10},
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "domainColor": "#d8cdb8",
+      "tickColor": "#d8cdb8"
+    },
+    "header": {
+      "labelFont": "Inter Tight, sans-serif",
+      "labelFontSize": 13,
+      "labelFontWeight": 700,
+      "labelColor": "#1a1a1a"
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {"state": "New South Wales",              "state_code": "NSW", "country": "India",       "value": 15610, "rank": 1},
+      {"state": "New South Wales",              "state_code": "NSW", "country": "China",       "value": 15080, "rank": 2},
+      {"state": "New South Wales",              "state_code": "NSW", "country": "Nepal",       "value": 8770,  "rank": 3},
+      {"state": "Victoria",                     "state_code": "VIC", "country": "India",       "value": 20570, "rank": 1},
+      {"state": "Victoria",                     "state_code": "VIC", "country": "China",       "value": 10980, "rank": 2},
+      {"state": "Victoria",                     "state_code": "VIC", "country": "New Zealand", "value": 5880,  "rank": 3},
+      {"state": "Queensland",                   "state_code": "QLD", "country": "New Zealand", "value": 9890,  "rank": 1},
+      {"state": "Queensland",                   "state_code": "QLD", "country": "India",       "value": 7900,  "rank": 2},
+      {"state": "Queensland",                   "state_code": "QLD", "country": "China",       "value": 4830,  "rank": 3},
+      {"state": "Western Australia",            "state_code": "WA",  "country": "UK",          "value": 5680,  "rank": 1},
+      {"state": "Western Australia",            "state_code": "WA",  "country": "India",       "value": 5390,  "rank": 2},
+      {"state": "Western Australia",            "state_code": "WA",  "country": "New Zealand", "value": 3650,  "rank": 3},
+      {"state": "South Australia",              "state_code": "SA",  "country": "India",       "value": 4850,  "rank": 1},
+      {"state": "South Australia",              "state_code": "SA",  "country": "China",       "value": 1770,  "rank": 2},
+      {"state": "South Australia",              "state_code": "SA",  "country": "Afghanistan", "value": 1010,  "rank": 3},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "country": "India",       "value": 1470,  "rank": 1},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "country": "China",       "value": 580,   "rank": 2},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "country": "Nepal",       "value": 440,   "rank": 3},
+      {"state": "Northern Territory",           "state_code": "NT",  "country": "India",       "value": 890,   "rank": 1},
+      {"state": "Northern Territory",           "state_code": "NT",  "country": "Philippines", "value": 320,   "rank": 2},
+      {"state": "Northern Territory",           "state_code": "NT",  "country": "Nepal",       "value": 310,   "rank": 3},
+      {"state": "Tasmania",                     "state_code": "TAS", "country": "India",       "value": 730,   "rank": 1},
+      {"state": "Tasmania",                     "state_code": "TAS", "country": "Philippines", "value": 230,   "rank": 2},
+      {"state": "Tasmania",                     "state_code": "TAS", "country": "Nepal",       "value": 190,   "rank": 3}
+    ]
+  },
+  "facet": {
+    "row": {
+      "field": "state_code",
+      "type": "nominal",
+      "sort": ["NSW", "VIC", "QLD", "WA", "SA", "ACT", "NT", "TAS"],
+      "header": {
+        "title": null,
+        "labelAlign": "left",
+        "labelAnchor": "middle",
+        "labelOrient": "left",
+        "labelAngle": 0,
+        "labelPadding": 10
+      }
+    }
+  },
+  "spacing": 10,
+  "spec": {
+    "width": "container",
+    "height": 65,
+    "layer": [
+      {
+        "mark": {"type": "bar", "cornerRadiusEnd": 3, "height": 18},
+        "encoding": {
+          "y": {
+            "field": "country",
+            "type": "nominal",
+            "sort": "-x",
+            "scale": {"paddingInner": 0.25, "paddingOuter": 0.15},
+            "axis": {
+              "title": null,
+              "labelLimit": 120,
+              "labelPadding": 4,
+              "labelFontSize": 11
+            }
+          },
+          "x": {
+            "field": "value",
+            "type": "quantitative",
+            "axis": {
+              "title": null,
+              "grid": false,
+              "format": ",.0f",
+              "tickCount": 5
+            },
+            "scale": {"domain": [0, 22000]}
+          },
+          "color": {
+            "field": "rank",
+            "type": "ordinal",
+            "scale": {
+              "domain": [1, 2, 3],
+              "range": ["#c14a26", "#d97a4f", "#e8b48b"]
+            },
+            "legend": null
+          },
+          "tooltip": [
+            {"field": "state",   "type": "nominal",      "title": "State"},
+            {"field": "country", "type": "nominal",      "title": "Country"},
+            {"field": "rank",    "type": "ordinal",      "title": "Rank"},
+            {"field": "value",   "type": "quantitative", "title": "Net migration", "format": ","}
+          ]
+        }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": 6,
+          "fontSize": 11,
+          "color": "#2a2a2a"
+        },
+        "encoding": {
+          "y": {"field": "country", "type": "nominal", "sort": "-x"},
+          "x": {"field": "value", "type": "quantitative"},
+          "text": {"field": "value", "type": "quantitative", "format": ","}
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "independent"
+    }
+  }
+}

@@ -1,62 +1,340 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 350,
-  "height": 350,
+  "description": "Net overseas migration to Australia by region of origin, 2004-05 to 2024-25.",
+  "width": "container",
+  "height": 380,
+  "background": "transparent",
+  "padding": {"left": 10, "right": 10, "top": 10, "bottom": 20},
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "grid": true,
+      "gridColor": "#ece3d4",
+      "domainColor": "#d8cdb8",
+      "tickColor": "#d8cdb8"
+    },
+    "legend": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "orient": "right",
+      "symbolType": "stroke",
+      "symbolStrokeWidth": 3,
+      "padding": 10
+    },
+    "font": "Inter Tight, sans-serif"
+  },
   "data": {
     "values": [
-      {"category": "Temporary student", "pct": 27},
-      {"category": "Skilled", "pct": 22},
-      {"category": "Working holiday", "pct": 18},
-      {"category": "Family", "pct": 15},
-      {"category": "Other", "pct": 18}
+      {"region": "Southern & Central Asia", "year": 2004, "value": 21100},
+      {"region": "Southern & Central Asia", "year": 2005, "value": 34430},
+      {"region": "Southern & Central Asia", "year": 2006, "value": 52690},
+      {"region": "Southern & Central Asia", "year": 2007, "value": 76630},
+      {"region": "Southern & Central Asia", "year": 2008, "value": 117990},
+      {"region": "Southern & Central Asia", "year": 2009, "value": 67390},
+      {"region": "Southern & Central Asia", "year": 2010, "value": 45900},
+      {"region": "Southern & Central Asia", "year": 2011, "value": 65510},
+      {"region": "Southern & Central Asia", "year": 2012, "value": 71250},
+      {"region": "Southern & Central Asia", "year": 2013, "value": 56710},
+      {"region": "Southern & Central Asia", "year": 2014, "value": 56660},
+      {"region": "Southern & Central Asia", "year": 2015, "value": 68070},
+      {"region": "Southern & Central Asia", "year": 2016, "value": 91550},
+      {"region": "Southern & Central Asia", "year": 2017, "value": 78440},
+      {"region": "Southern & Central Asia", "year": 2018, "value": 79760},
+      {"region": "Southern & Central Asia", "year": 2019, "value": 56960},
+      {"region": "Southern & Central Asia", "year": 2020, "value": -36680},
+      {"region": "Southern & Central Asia", "year": 2021, "value": 85410},
+      {"region": "Southern & Central Asia", "year": 2022, "value": 219290},
+      {"region": "Southern & Central Asia", "year": 2023, "value": 173910},
+      {"region": "Southern & Central Asia", "year": 2024, "value": 119240},
+
+      {"region": "North-East Asia", "year": 2004, "value": 27170},
+      {"region": "North-East Asia", "year": 2005, "value": 31700},
+      {"region": "North-East Asia", "year": 2006, "value": 50780},
+      {"region": "North-East Asia", "year": 2007, "value": 64970},
+      {"region": "North-East Asia", "year": 2008, "value": 73220},
+      {"region": "North-East Asia", "year": 2009, "value": 42180},
+      {"region": "North-East Asia", "year": 2010, "value": 36320},
+      {"region": "North-East Asia", "year": 2011, "value": 50480},
+      {"region": "North-East Asia", "year": 2012, "value": 48530},
+      {"region": "North-East Asia", "year": 2013, "value": 36480},
+      {"region": "North-East Asia", "year": 2014, "value": 34470},
+      {"region": "North-East Asia", "year": 2015, "value": 39940},
+      {"region": "North-East Asia", "year": 2016, "value": 52840},
+      {"region": "North-East Asia", "year": 2017, "value": 41450},
+      {"region": "North-East Asia", "year": 2018, "value": 41880},
+      {"region": "North-East Asia", "year": 2019, "value": 32320},
+      {"region": "North-East Asia", "year": 2020, "value": -41850},
+      {"region": "North-East Asia", "year": 2021, "value": 19250},
+      {"region": "North-East Asia", "year": 2022, "value": 117860},
+      {"region": "North-East Asia", "year": 2023, "value": 95380},
+      {"region": "North-East Asia", "year": 2024, "value": 71810},
+
+      {"region": "South-East Asia", "year": 2004, "value": 17220},
+      {"region": "South-East Asia", "year": 2005, "value": 19330},
+      {"region": "South-East Asia", "year": 2006, "value": 22650},
+      {"region": "South-East Asia", "year": 2007, "value": 30270},
+      {"region": "South-East Asia", "year": 2008, "value": 31420},
+      {"region": "South-East Asia", "year": 2009, "value": 19350},
+      {"region": "South-East Asia", "year": 2010, "value": 17680},
+      {"region": "South-East Asia", "year": 2011, "value": 19610},
+      {"region": "South-East Asia", "year": 2012, "value": 17350},
+      {"region": "South-East Asia", "year": 2013, "value": 16930},
+      {"region": "South-East Asia", "year": 2014, "value": 16830},
+      {"region": "South-East Asia", "year": 2015, "value": 21280},
+      {"region": "South-East Asia", "year": 2016, "value": 30180},
+      {"region": "South-East Asia", "year": 2017, "value": 31840},
+      {"region": "South-East Asia", "year": 2018, "value": 32660},
+      {"region": "South-East Asia", "year": 2019, "value": 23320},
+      {"region": "South-East Asia", "year": 2020, "value": -8350},
+      {"region": "South-East Asia", "year": 2021, "value": 33080},
+      {"region": "South-East Asia", "year": 2022, "value": 98610},
+      {"region": "South-East Asia", "year": 2023, "value": 76300},
+      {"region": "South-East Asia", "year": 2024, "value": 58430},
+
+      {"region": "North-West Europe", "year": 2004, "value": 22090},
+      {"region": "North-West Europe", "year": 2005, "value": 26630},
+      {"region": "North-West Europe", "year": 2006, "value": 28850},
+      {"region": "North-West Europe", "year": 2007, "value": 30900},
+      {"region": "North-West Europe", "year": 2008, "value": 32260},
+      {"region": "North-West Europe", "year": 2009, "value": 20830},
+      {"region": "North-West Europe", "year": 2010, "value": 18280},
+      {"region": "North-West Europe", "year": 2011, "value": 21030},
+      {"region": "North-West Europe", "year": 2012, "value": 24180},
+      {"region": "North-West Europe", "year": 2013, "value": 19890},
+      {"region": "North-West Europe", "year": 2014, "value": 17350},
+      {"region": "North-West Europe", "year": 2015, "value": 16630},
+      {"region": "North-West Europe", "year": 2016, "value": 17150},
+      {"region": "North-West Europe", "year": 2017, "value": 16910},
+      {"region": "North-West Europe", "year": 2018, "value": 18510},
+      {"region": "North-West Europe", "year": 2019, "value": 18840},
+      {"region": "North-West Europe", "year": 2020, "value": -5040},
+      {"region": "North-West Europe", "year": 2021, "value": 14620},
+      {"region": "North-West Europe", "year": 2022, "value": 27450},
+      {"region": "North-West Europe", "year": 2023, "value": 22360},
+      {"region": "North-West Europe", "year": 2024, "value": 17920},
+
+      {"region": "Southern & Eastern Europe", "year": 2004, "value": 4090},
+      {"region": "Southern & Eastern Europe", "year": 2005, "value": 4660},
+      {"region": "Southern & Eastern Europe", "year": 2006, "value": 5400},
+      {"region": "Southern & Eastern Europe", "year": 2007, "value": 5810},
+      {"region": "Southern & Eastern Europe", "year": 2008, "value": 6090},
+      {"region": "Southern & Eastern Europe", "year": 2009, "value": 4810},
+      {"region": "Southern & Eastern Europe", "year": 2010, "value": 4380},
+      {"region": "Southern & Eastern Europe", "year": 2011, "value": 4500},
+      {"region": "Southern & Eastern Europe", "year": 2012, "value": 4550},
+      {"region": "Southern & Eastern Europe", "year": 2013, "value": 4320},
+      {"region": "Southern & Eastern Europe", "year": 2014, "value": 3850},
+      {"region": "Southern & Eastern Europe", "year": 2015, "value": 3680},
+      {"region": "Southern & Eastern Europe", "year": 2016, "value": 4640},
+      {"region": "Southern & Eastern Europe", "year": 2017, "value": 4760},
+      {"region": "Southern & Eastern Europe", "year": 2018, "value": 4280},
+      {"region": "Southern & Eastern Europe", "year": 2019, "value": 4350},
+      {"region": "Southern & Eastern Europe", "year": 2020, "value": -1320},
+      {"region": "Southern & Eastern Europe", "year": 2021, "value": 4830},
+      {"region": "Southern & Eastern Europe", "year": 2022, "value": 8950},
+
+      {"region": "Sub-Saharan Africa", "year": 2006, "value": 11260},
+      {"region": "Sub-Saharan Africa", "year": 2007, "value": 11990},
+      {"region": "Sub-Saharan Africa", "year": 2008, "value": 12940},
+      {"region": "Sub-Saharan Africa", "year": 2009, "value": 9410},
+      {"region": "Sub-Saharan Africa", "year": 2010, "value": 8480},
+      {"region": "Sub-Saharan Africa", "year": 2011, "value": 8930},
+      {"region": "Sub-Saharan Africa", "year": 2012, "value": 9580},
+      {"region": "Sub-Saharan Africa", "year": 2013, "value": 8550},
+      {"region": "Sub-Saharan Africa", "year": 2014, "value": 8120},
+      {"region": "Sub-Saharan Africa", "year": 2015, "value": 8580},
+      {"region": "Sub-Saharan Africa", "year": 2016, "value": 10520},
+      {"region": "Sub-Saharan Africa", "year": 2017, "value": 10520},
+      {"region": "Sub-Saharan Africa", "year": 2018, "value": 11030},
+      {"region": "Sub-Saharan Africa", "year": 2019, "value": 9920},
+      {"region": "Sub-Saharan Africa", "year": 2020, "value": -3070},
+      {"region": "Sub-Saharan Africa", "year": 2021, "value": 11440},
+      {"region": "Sub-Saharan Africa", "year": 2022, "value": 21560},
+      {"region": "Sub-Saharan Africa", "year": 2023, "value": 18420},
+      {"region": "Sub-Saharan Africa", "year": 2024, "value": 12930},
+
+      {"region": "North Africa & Middle East", "year": 2004, "value": 8120},
+      {"region": "North Africa & Middle East", "year": 2005, "value": 9670},
+      {"region": "North Africa & Middle East", "year": 2006, "value": 11820},
+      {"region": "North Africa & Middle East", "year": 2007, "value": 13720},
+      {"region": "North Africa & Middle East", "year": 2008, "value": 14990},
+      {"region": "North Africa & Middle East", "year": 2009, "value": 11220},
+      {"region": "North Africa & Middle East", "year": 2010, "value": 10260},
+      {"region": "North Africa & Middle East", "year": 2011, "value": 12060},
+      {"region": "North Africa & Middle East", "year": 2012, "value": 13680},
+      {"region": "North Africa & Middle East", "year": 2013, "value": 11930},
+      {"region": "North Africa & Middle East", "year": 2014, "value": 11680},
+      {"region": "North Africa & Middle East", "year": 2015, "value": 14400},
+      {"region": "North Africa & Middle East", "year": 2016, "value": 18900},
+      {"region": "North Africa & Middle East", "year": 2017, "value": 15080},
+      {"region": "North Africa & Middle East", "year": 2018, "value": 13720},
+      {"region": "North Africa & Middle East", "year": 2019, "value": 11280},
+      {"region": "North Africa & Middle East", "year": 2020, "value": -3970},
+      {"region": "North Africa & Middle East", "year": 2021, "value": 12480},
+      {"region": "North Africa & Middle East", "year": 2022, "value": 19620},
+      {"region": "North Africa & Middle East", "year": 2023, "value": 16480},
+      {"region": "North Africa & Middle East", "year": 2024, "value": 12380},
+
+      {"region": "Oceania & Antarctica", "year": 2004, "value": 28140},
+      {"region": "Oceania & Antarctica", "year": 2005, "value": 28030},
+      {"region": "Oceania & Antarctica", "year": 2006, "value": 38330},
+      {"region": "Oceania & Antarctica", "year": 2007, "value": 35070},
+      {"region": "Oceania & Antarctica", "year": 2008, "value": 32660},
+      {"region": "Oceania & Antarctica", "year": 2009, "value": 24410},
+      {"region": "Oceania & Antarctica", "year": 2010, "value": 31390},
+      {"region": "Oceania & Antarctica", "year": 2011, "value": 35650},
+      {"region": "Oceania & Antarctica", "year": 2012, "value": 32550},
+      {"region": "Oceania & Antarctica", "year": 2013, "value": 22330},
+      {"region": "Oceania & Antarctica", "year": 2014, "value": 14710},
+      {"region": "Oceania & Antarctica", "year": 2015, "value": 9300},
+      {"region": "Oceania & Antarctica", "year": 2016, "value": 11790},
+      {"region": "Oceania & Antarctica", "year": 2017, "value": 16650},
+      {"region": "Oceania & Antarctica", "year": 2018, "value": 17710},
+      {"region": "Oceania & Antarctica", "year": 2019, "value": 14820},
+      {"region": "Oceania & Antarctica", "year": 2020, "value": 11540},
+      {"region": "Oceania & Antarctica", "year": 2021, "value": 5810},
+      {"region": "Oceania & Antarctica", "year": 2022, "value": 12530},
+      {"region": "Oceania & Antarctica", "year": 2023, "value": 13740},
+      {"region": "Oceania & Antarctica", "year": 2024, "value": 9430},
+
+      {"region": "Americas", "year": 2004, "value": 6090},
+      {"region": "Americas", "year": 2005, "value": 7150},
+      {"region": "Americas", "year": 2006, "value": 8550},
+      {"region": "Americas", "year": 2007, "value": 9230},
+      {"region": "Americas", "year": 2008, "value": 9300},
+      {"region": "Americas", "year": 2009, "value": 7160},
+      {"region": "Americas", "year": 2010, "value": 7680},
+      {"region": "Americas", "year": 2011, "value": 8350},
+      {"region": "Americas", "year": 2012, "value": 7710},
+      {"region": "Americas", "year": 2013, "value": 6920},
+      {"region": "Americas", "year": 2014, "value": 7300},
+      {"region": "Americas", "year": 2015, "value": 8200},
+      {"region": "Americas", "year": 2016, "value": 8910},
+      {"region": "Americas", "year": 2017, "value": 8980},
+      {"region": "Americas", "year": 2018, "value": 8970},
+      {"region": "Americas", "year": 2019, "value": 8260},
+      {"region": "Americas", "year": 2020, "value": -1500},
+      {"region": "Americas", "year": 2021, "value": 8290},
+      {"region": "Americas", "year": 2022, "value": 17580},
+      {"region": "Americas", "year": 2023, "value": 15440},
+      {"region": "Americas", "year": 2024, "value": 11500}
     ]
   },
   "transform": [
-    {
-      "calculate": "datum.pct + '%'",
-      "as": "pct_label"
-    }
+    {"calculate": "datum.year + '-' + slice(toString(datum.year + 1), 2, 4)", "as": "fy"}
   ],
   "layer": [
     {
-      "mark": {"type": "arc", "innerRadius": 80, "outerRadius": 140},
+      "data": {"values": [{"y": 0}]},
+      "mark": {"type": "rule", "color": "#8b7e6c", "strokeDash": [3, 3], "strokeWidth": 1},
+      "encoding": {"y": {"field": "y", "type": "quantitative"}}
+    },
+    {
+      "mark": {"type": "line", "interpolate": "monotone", "strokeWidth": 2.2, "point": {"size": 30, "filled": true}},
       "encoding": {
-        "theta": {"field": "pct", "type": "quantitative"},
+        "x": {
+          "field": "year",
+          "type": "ordinal",
+          "axis": {
+            "title": null,
+            "labelExpr": "isNumber(datum.value) && datum.value > 2000 && datum.value % 3 === 1 ? datum.value + '-' + slice(toString(datum.value + 1), 2, 4) : ''",
+            "labelAngle": -40
+          }
+        },
+        "y": {
+          "field": "value",
+          "type": "quantitative",
+          "axis": {"title": "Net migration", "format": ",.0f"}
+        },
         "color": {
-          "field": "category",
+          "field": "region",
           "type": "nominal",
           "scale": {
             "domain": [
-              "Temporary student","Skilled","Working holiday","Family","Other"
+              "Southern & Central Asia",
+              "North-East Asia",
+              "South-East Asia",
+              "North-West Europe",
+              "Southern & Eastern Europe",
+              "Sub-Saharan Africa",
+              "North Africa & Middle East",
+              "Oceania & Antarctica",
+              "Americas"
             ],
-            "range": ["#1d6b72","#c8963e","#a63d2f","#2c3e50","#9b9286"]
+            "range": ["#c14a26", "#d97a4f", "#e5a06d", "#1e5f74", "#3d8aa3", "#6b7960", "#a48b5e", "#d29b3a", "#7e6c4c"]
           },
-          "legend": {"title": "Visa category", "labelFontSize": 12}
+          "legend": {"title": "Region of origin"}
         },
         "tooltip": [
-          {"field": "category", "title": "Visa type"},
-          {"field": "pct", "title": "%"}
+          {"field": "region", "type": "nominal", "title": "Region"},
+          {"field": "fy", "type": "nominal", "title": "Year"},
+          {"field": "value", "type": "quantitative", "title": "Net migration", "format": ","}
         ]
       }
     },
     {
+      "data": {
+        "values": [
+          {"year": 2006, "value": 52690, "yEnd": 95000}
+        ]
+      },
       "mark": {
-        "type": "text",
-        "radius": 110,
-        "fontSize": 12,
-        "fontWeight": "bold",
-        "color": "white"
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 1
       },
       "encoding": {
-        "theta": {
-          "field": "pct",
-          "type": "quantitative",
-          "stack": true
-        },
-        "text": {
-          "field": "pct_label",
-          "type": "nominal"
-        }
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "value", "type": "quantitative"},
+        "y2": {"field": "yEnd"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2006, "value": 97000, "label": "Asia starts dominating"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontStyle": "italic",
+        "fontSize": 11,
+        "color": "#1a1a1a",
+        "dy": -8,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "value", "type": "quantitative"},
+        "text": {"field": "label"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2022, "value": 219290, "label": "Post-COVID record: 219,000"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontStyle": "italic",
+        "fontSize": 11,
+        "color": "#1a1a1a",
+        "dy": -14,
+        "fontWeight": 500
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "value", "type": "quantitative"},
+        "text": {"field": "label"}
       }
     }
   ]

@@ -1,49 +1,458 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Australian Migration</title>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Australian Migration</title>
+ <meta name="description" content="An interactive data essay on overseas migration to Australia, 2004-05 to 2024-25. Built with Vega-Lite for FIT2179 Data Visualisation 2, Monash University." />
 
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
+ <link rel="preconnect" href="https://fonts.googleapis.com" />
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+ <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter+Tight:wght@350;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+
+ <script src="https://cdn.jsdelivr.net/npm/vega@5.30.0"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.21.0"></script>
+ <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.26.0"></script>
+
+
+ <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <h2>Net Overseas Migration, Australia 2004-2025</h2>
-  <div id="chart1" style="width:100%;"></div>
 
-  <h2>Arrivals vs Departures, Australia 2004-2025</h2>
-  <div id="chart2" style="width:100%;"></div>
+<a href="#main" class="skip">Skip to main content</a>
 
-  <h2>NOM as % of Population</h2>
-  <div id="chart3" style="width:100%;"></div>
 
-  <h2>Who Makes Up NOM? (2004–2025)</h2>
-  <div id="chart4" style="width:100%;"></div>
+<!-- ============================ NAV ============================ -->
+<nav class="topnav" aria-label="Page sections">
+ <div class="page nav-inner">
+   <a href="#top" class="nav-brand">Migration to Australia</a>
+   <ul class="nav-links">
+     <li><a href="#part1">Part 1</a></li>
+     <li><a href="#part2">Part 2</a></li>
+     <li><a href="#part3">Part 3</a></li>
+     <li><a href="#part4">Part 4</a></li>
+     <li><a href="#conclusion">Conclusion</a></li>
+     <li><a href="#sources">Sources</a></li>
+   </ul>
+ </div>
+</nav>
 
-  <script>
-    var chart1 = "charts/chart1.vg.json";
-    vegaEmbed("#chart1", chart1)
-      .then(function(result) {})
-      .catch(console.error);
 
-    var chart2 = "charts/chart2.vg.json";
-    vegaEmbed("#chart2", chart2)
-      .then(function(result) {})
-      .catch(console.error);
+<!-- ============================ HEAD ============================ -->
+<header class="masthead" id="top">
+  <div class="page">
+    <p class="eyebrow">FIT2179 - Data Visualisation 2</p>
+    <h1  style="margin-bottom: 2.5rem;">Migration<br/>to&nbsp;Australia.</h1>
+    <p class="lead" style="font-size: 1.3rem; line-height: 1.6;">
+      Net overseas migration is the gap between long-term arrivals and long-term departures. 
+      It is the single largest driver of Australia's population growth, outweighing natural increase in most years since 2006. 
+      This page follows twenty years of that flow: how the national totals moved, which countries migrants came from,
+      which states received them, and which visas they arrived on. 
+    </p>
+  </div>
+</header>
 
-    var chart3 = "charts/chart3.vg.json";
-    vegaEmbed("#chart3", chart3)
-      .then(function(result) {})
-      .catch(console.error);
-    
-    var chart4 = "charts/chart4.vg.json";
-    vegaEmbed("#chart4", chart4)
-      .then(function(result) {})
-      .catch(console.error);
-  </script>
-  
 
+<main id="main">
+
+
+<!-- ============================ PART 1 ============================ -->
+<section id="part1" class="part">
+ <div class="page">
+   <p class="part-label">Part 1</p>
+   <h2 class="part-title">The National Picture</h2>
+   <p class="part-intro">
+     Net overseas migration to Australia stayed between 140,000 and 300,000 people a year for most of the 2000s and 2010s. 
+     Then COVID border closures pushed it below zero for the first time in modern history, and the post-pandemic rebound drove 
+     it to a record 538,000. The three charts in this section show the national total, the visa categories behind it, 
+     and the net flow by visa class in the most recent year.
+   </p>
+
+
+   <div class="takeaway">
+     <strong>Takeaway:</strong> The 2020-21 collapse and the 2022-23 record peak are the largest swings in the series. 
+     The shape of the rebound, however, was determined by visa policy, not by the pandemic itself.
+   </div>
+
+
+   <!-- CHART 1 ANCHOR -->
+  <div class="chart-row two-col-row">
+    <div class="chart-card anchor">
+      <div class="chart-card-head">
+        <span class="chart-tag">Chart 1</span>
+      </div>
+      <h3 class="chart-title">Annual net overseas migration</h3>
+      <p class="chart-desc" style="margin-top: 1rem;">Total net overseas migration, 2004-05 to 2024-25.
+      Total net overseas migration to Australia, financial year. Marked points show the 2020-21 COVID trough and the 2022-23 post-pandemic peak.</p>
+      <div class="viz" id="chart-01"></div>
+    </div>
+
+      <div class="chart-card anchor">
+        <div class="chart-card-head">
+          <span class="chart-tag">Chart 2</span>
+        </div>
+        <h3 class="chart-title">Arrivals by visa category</h3>
+        <p class="chart-desc" style="margin-top: 1rem;"> Total long-term arrivals broken into four groups: temporary visas, 
+          permanent visas, New Zealand citizens, and Australian residents returning. Temporary visa arrivals account for almost 
+          all the growth over twenty years.</p>
+        <div class="viz" id="chart-02"></div>
+      </div>
+    </div>
+
+
+    <div class="chart-card anchor">
+      <div class="chart-card-head">
+        <span class="chart-tag">Chart 3</span>
+      </div>
+      <h3 class="chart-title">Net flow by visa class.</h3>
+      <p class="chart-desc" style="margin-top: 1rem;"> Arrivals minus departures in the most recent year, ranked by visa class. 
+        Higher-education students are the single largest positive contributor; departures of Australian 
+        citizens and other temporary visa holders are the largest negative ones.</p>
+      <div class="viz" id="chart-03"></div>
+    </div>
+
+
+   <div class="section-addendum">
+     <p class="addendum-label">Part 1 Conclusion</p>
+     <p style="max-width: 100%; width: 100%;">
+       Chart 1 shows the total flow rose from 142,000 in 2004-05 to a record 538,000 in 2022-23, 
+       then settled at 306,000 in 2024-25. Chart 2 shows almost all that growth came from temporary visas, 
+       not permanent ones. Chart 3 shows which temporary categories drove the most recent year: 
+       higher-education students added the most people (+98,000), while departing Australian citizens and 
+       expiring temporary visas removed the most.
+     </p>
+   </div>
+ </div>
+</section>
+
+
+<!-- ============================ PART 2 ============================ -->
+<section id="part2" class="part">
+ <div class="page">
+   <p class="part-label">Part 2</p>
+   <h2 class="part-title">Where Migrants Came From</h2>
+   <p class="part-intro">
+     In 2004-05, the United Kingdom was the largest single source of net migration to Australia. 
+     By 2024-25, India contributed more than three times as many migrants as the UK. The four charts 
+     in this section show that shift at four scales: by region of origin over time, by country rank year 
+     on year, as a heatmap across two decades, and as pre- versus post-pandemic averages.
+   </p>
+
+
+   <div class="takeaway">
+     <strong>Takeaway:</strong> India is now the largest source country in every state except Western Australia. 
+     Combined with Nepal, China, and the Philippines, Asia accounts for the majority of Australia's net migration intake in 2024-25.
+   </div>
+
+
+   <!-- CHART 4 ANCHOR -->
+   <div class="chart-card anchor">
+     <div class="chart-card-head">
+       <span class="chart-tag">Chart 4</span>
+     </div>
+     <h3 class="chart-title">Net migration by region of origin</h3>
+     <p class="chart-desc">Annual net migration grouped into nine world regions using the ABS Standard Australian 
+      Classification of Countries. Southern and Central Asia overtakes North-West Europe as the largest source around 2007.</p>
+     <div class="viz" id="chart-04"></div>
+   </div>
+
+
+   <!-- CHART 5 + COMMENTARY (mixed layout like the reference) -->
+    <div class="chart-card anchor wide">
+      <div class="chart-card-head">
+        <span class="chart-tag">Chart 5</span>
+      </div>
+      <h3 class="chart-title">Annual rank of the top six source countries</h3>
+      <p class="chart-desc">Each line follows one country across twenty years. Crossings mark the year 
+        one country overtook another. India holds rank one for most of the period from 2013 onward.</p>
+      <div class="viz" id="chart-05"></div>
+    </div>
+
+
+   <!-- CHART 6 (heatmap) AND CHART 7 (slope) -->
+    <div class="chart-card anchor">
+      <div class="chart-card-head">
+        <span class="chart-tag">Chart 6</span>
+      </div>
+      <h3 class="chart-title">Country by year heatmap of net migration</h3>
+      <p class="chart-desc">Eight major source countries across twenty-one years. 
+        Warm colours show net inflows, cool colours show outflows. The vertical band of blue in 2020-21 is the COVID border closure.</p>
+      <div class="viz" id="chart-06"></div>
+    </div>
+
+    <div class="chart-and-notes">
+  <div class="chart-card anchor">
+    <div class="chart-card-head">
+      <span class="chart-tag">Chart 7</span>
+    </div>
+    <h3 class="chart-title">Average net migration, pre- and post-pandemic</h3>
+    <p class="chart-desc">Average net migration in 2017-18 to 2019-20 compared with 2022-23 to 2024-25. Steeper upward slopes show the countries that grew most as a share of post-pandemic intake.</p>
+    <div class="viz" id="chart-07"></div>
+  </div>
+
+  <div class="notes-stack" style="display: flex; flex-direction: column; gap: 1.5rem;">
+    <div class="note-card" style="flex: 1;">
+      <h5 style="font-size: 1rem;">PRE-COVID vs POST-COVID</h5>
+      <p style="line-height: 2;">The slope chart compares two three-year averages instead of two single years, 
+        so the comparison is not distorted by COVID. The baseline is 2017-18 to 2019-20. The post-pandemic figure is 
+        2022-23 to 2024-25. India's annual average rose by 11,000 between the two periods. China's rose by 31,000. 
+        The Philippines roughly doubled. The UK and South Africa barely moved. The steepness of each line shows how
+        much each country's contribution grew structurally, with the pandemic year itself removed from view.</p>
+    </div>
+    <div class="note-card" style="flex: 1;">
+      <h5 style="font-size: 1rem;">Part 2 Conclusion</h5>
+      <p style="line-height: 2;">Australia's migration intake has shifted from Europe to Asia. Chart 4 shows Southern 
+        and Central Asia overtaking North-West Europe around 2007. Chart 5 has India at rank one from 2013 onward, with 
+        the UK falling out of the top three by 2014. Chart 6 records COVID as a column of negative flows in 2020-21 affecting 
+        every major source. Chart 7 confirms the rebound is structural, not temporary: India, China, and the Philippines all 
+        sit at higher three-year averages than before the pandemic.</p>
+    </div>
+  </div>
+ </div>
+</section>
+
+
+<!-- ============================ PART 3 ============================ -->
+<section id="part3" class="part">
+ <div class="page">
+   <p class="part-label">Part 3</p>
+   <h2 class="part-title">Where Migrants Settled</h2>
+   <p class="part-intro">
+     National totals hide local variation. Each state and territory has its own migration profile, 
+     shaped by labour markets, universities, historic ties, and the visa pathways that bring people in. 
+     The three charts in this section show net migration by state in raw terms, normalised per resident, 
+     and broken down by country of origin.
+   </p>
+
+
+   <div class="takeaway">
+     <strong>Takeaway:</strong> Raw counts make NSW and Victoria dominate. Per capita, the Northern Territory leads 
+     the country at three times Tasmania's rate. The two views answer different questions about the same flow.
+   </div>
+
+
+   <!-- CHART 8 ANCHOR (the required map) -->
+   <div class="chart-card anchor">
+     <div class="chart-card-head">
+       <span class="chart-tag">Chart 8</span>
+     </div>
+     <h3 class="chart-title">Net overseas migration per 1,000 residents, by state</h3>
+     <p class="chart-desc">Choropleth map of Australia, normalised by ABS Estimated Resident Population at June 2024. 
+      The Northern Territory and Western Australia receive the largest inflows per resident. Tasmania receives the smallest.</p>
+     <div class="viz" id="chart-08"></div>
+   </div>
+
+
+   <div class="callout-bar">
+     <strong>Why per-capita matters.</strong> Raw counts make NSW and Victoria
+     dominate by virtue of population size. Dividing by population reveals which
+     jurisdictions are most exposed to migration relative to their residents.
+   </div>
+
+
+   <!-- CHART 11 + CHART 9 -->
+  <div class="chart-and-notes" style="grid-template-columns: 1fr 1fr; align-items: start;">
+    <div class="chart-card anchor wide">
+      <div class="chart-card-head">
+        <span class="chart-tag">Chart 9</span>
+      </div>
+      <h3 class="chart-title">Top three source countries per state.</h3>
+      <p class="chart-desc">Each state's leading sources. NSW and VIC draw most heavily from India and China; WA is the only state where the UK still leads.</p>
+      <div class="viz" id="chart-09"></div>
+    </div>
+
+    <div class="notes-stack" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      <div class="note-card">
+        <h5 style="font-size: 1rem;">Why India Dominates</h5>
+        <p style="line-height: 2;">Indian migration to Australia is dominated by higher-education students, who concentrate in the 
+          same cities where Indian community networks are largest. NSW, Victoria, and Queensland together host more than 70% of 
+          Australia's international student enrolments, which is why India tops their rankings.</p>
+      </div>
+      <div class="note-card">
+        <h5 style="font-size: 1rem;">Two outliers worth noticing</h5>
+        <p style="line-height: 2;">Western Australia is the only state where the UK still leads. The link goes back to postwar 
+          migration schemes that filled British workers into Perth's trades and mining. Queensland is the only state where New 
+          Zealand leads, a function of the trans-Tasman free-movement arrangement and the state's climate and cost advantages.</p>
+      </div>
+      <div class="note-card">
+        <h5 style="font-size: 1rem;">What chart 9 tells us</h5>
+        <p style="line-height: 2;">The top-three rankings differ from state to state, but the underlying truth is consistent: 
+          India, China, and one historic source (UK or New Zealand) appear in almost every list. Australia's migration system 
+          is less regionally varied than it first appears. The same countries dominate everywhere.</p>
+      </div>
+    </div>
+  </div>
+
+
+   <!-- CHART 10 with side notes -->
+    <div class="chart-card anchor wide">
+      <div class="chart-card-head">
+        <span class="chart-tag">Chart 10</span>
+      </div>
+      <h3 class="chart-title">Regional composition of net migration by state</h3>
+      <p class="chart-desc">Each bar shows one state's net migration broken down by region of origin and normalised to 100%. 
+        Small multiples allow composition to be compared across states without losing the part-to-whole detail.</p>
+      <div class="viz" id="chart-10"></div>
+    </div>
+
+
+   <div class="section-addendum">
+     <p class="addendum-label">Part 3 Conclusion</p>
+     <p>
+       The map gives geography, the ranked bars give precision, the small multiples give composition. 
+       The three views disagree usefully. NSW and Victoria dominate raw counts but sit mid-table per capita. 
+       The Northern Territory ranks last by raw count but first per resident. Each state draws on a different 
+       mix of source countries, and that mix is not random - Western Australia retains its British connection, 
+       Queensland retains its New Zealand one, NSW and Victoria pull most heavily from India and China. 
+       The national headline figure is the sum of eight different migration systems sharing one border.
+     </p>
+   </div>
+ </div>
+</section>
+
+
+<!-- ============================ PART 4 ============================ -->
+<section id="part4" class="part">
+ <div class="page">
+   <p class="part-label">Part 4</p>
+   <h2 class="part-title">Which Visas Brought Them</h2>
+   <p class="part-intro">
+     Visa categories distribute themselves unequally across Australia. Students, working-holiday makers, skilled workers, 
+     and New Zealand citizens each carry their own geography. This section combines the eight state-level ABS visa tables 
+     for the first time on this page to show which visa class drives which state, and how the student visa story unfolded over twenty years.
+   </p>
+
+
+   <div class="takeaway">
+     <strong>Takeaway:</strong> Higher-education students are the largest single pull factor for New South Wales and Victoria. 
+     Queensland is anchored by New Zealand citizens. Western Australia is anchored by skilled-worker visas. The mix is not a national constant.
+   </div>
+
+
+   <!-- CHART 11 ANCHOR -->
+   <div class="chart-card anchor">
+     <div class="chart-card-head">
+       <span class="chart-tag">Chart 11</span>
+     </div>
+     <h3 class="chart-title">Net flow by state and visa class</h3>
+     <p class="chart-desc">Each column is a state or territory; each row a visa class. Cells are coloured by net flow: 
+      red for positive, blue for negative. The brightest red cells are higher-education students concentrating in NSW and Victoria. 
+      The brightest blue cells are Australian citizens departing the same states.</p>
+     <div class="viz" id="chart-12"></div>
+   </div>
+
+
+   <!-- CHART 13: state × visa heatmap (NEW) -->
+   <div class="chart-card anchor">
+     <div class="chart-card-head">
+       <span class="chart-tag">Chart 12</span>
+     </div>
+     <h3 class="chart-title">Net flow by visa class</h3>
+     <p class="chart-desc">Arrivals and departures by visa class for the most recent year, with the net flow shown as the gap between them. 
+      The largest positive gap is higher-education students; the largest negative gap is departing Australian citizens.</p>
+     <div class="viz" id="chart-13"></div>
+   </div>
+
+
+   <div class="section-addendum">
+     <p class="addendum-label">Part 4 Conclusion</p>
+     <p>
+       Chart 11 confirms that visa class, not country of origin, is what determines whether someone settles permanently. 
+       Chart 12 shows where each visa class lands: student visas anchor NSW and Victoria, skilled-worker visas anchor Western Australia, 
+       and New Zealand citizens anchor Queensland. Every state has a different dominant pull factor, which is the underlying reason 
+       no national average captures Australia's migration system well.
+     </p>
+   </div>
+ </div>
+</section>
+
+
+<!-- ============================ CONCLUSION ============================ -->
+<section id="conclusion" class="part conclusion">
+ <div class="page">
+   <p class="part-label">Conclusion</p>
+   <h2 class="part-title">Four Findings From Four Parts</h2>
+   <p class="part-intro">
+     Each part of this page contributes one finding. Together they describe how Australia's migration system actually behaves.
+   </p>
+
+
+   <div class="card-grid four-up">
+     <div class="info-card">
+       <h4>Pandemic disruption, not reset</h4>
+       <p>Net migration collapsed to -84,940 in 2020-21 but rebounded to a record 538,340 in 2022-23. By 2024-25 it had settled at 306,000, 
+        close to the long-run trend. The swing was unprecedented but it did not change the underlying trajectory.</p>
+     </div>
+     <div class="info-card">
+       <h4>Origins shifted east</h4>
+       <p>In 2004-05 the UK was the largest source. By 2024-25 India contributes more than three times as many migrants as the UK. 
+        South and Central Asia overtook North-West Europe as the largest region of origin around 2007 and has held that position since.</p>
+     </div>
+     <div class="info-card">
+       <h4>Eight distinct profiles</h4>
+       <p>Raw counts make NSW and Victoria dominate. Per capita, the Northern Territory leads at three times Tasmania's rate. Each state 
+        draws on a different top-three source country mix, so no national average captures the system well.</p>
+     </div>
+     <div class="info-card">
+       <h4>Visa class predicts geography</h4>
+       <p>Higher-education students anchor NSW and Victoria. Skilled-worker visas anchor Western Australia. New Zealand citizens anchor 
+        Queensland. The visa pathway a migrant arrives on predicts the state they land in more reliably than any other variable.</p>
+     </div>
+   </div>
+ </div>
+</section>
+
+<!-- ============================ SOURCES / SUBMISSION ============================ -->
+<section id="sources" class="part submission">
+ <div class="page">
+   <div class="card-grid two-up">
+     <div class="info-card large">
+       <h4>Authorship</h4>
+       <p class="submission-title">FIT2179 - Data Visualisation 2 - Semester 1, 2026.</p>
+        <p>
+        Author: Rachel Pribadi<br>
+        Last Edited: May 29, 2026
+        </p>
+
+        <p>
+        AI-tool acknowledgement:<br>
+        Generative AI was used to assist in editing, grammar checks, and visual design support.
+        </p>
+     </div>
+     <div class="info-card large">
+       <h4>Data Sources</h4>
+       <ul class="source-list">
+         <li>
+           <strong>ABS — Migration, Australia, 2004-05 to 2024-25.</strong>
+           Net Overseas Migration by country of birth (Tables 1.1-1.9) and
+           Overseas migrant arrivals and departures by visa group (Tables 4.1-4.9).
+           <br/><a href="https://www.abs.gov.au/statistics/people/population/overseas-migration/latest-release" target="_blank" rel="noopener">abs.gov.au/.../migration-australia ↗</a>
+         </li>
+         <li>
+           <strong>Australian states GeoJSON.</strong> Rowan Hogan, 2017.
+           Map geometry for the choropleth map.
+           <br/><a href="https://github.com/rowanhogan/australian-states" target="_blank" rel="noopener">github.com/rowanhogan/australian-states ↗</a>
+         </li>
+       </ul>
+     </div>
+   </div>
+
+   <div class="colophon">
+     <a href="#top">Top ↑</a>
+   </div>
+ </div>
+</section>
+
+
+</main>
+
+
+<script src="js/render.js"></script>
 </body>
 </html>
+
+
+

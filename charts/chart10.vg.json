@@ -1,0 +1,566 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Small-multiple stacked bars showing the regional composition of net migration to each state and territory, 2024-25. Reveals that VIC and NSW draw most heavily from Southern & Central Asia, while WA still has a large North-West European share.",
+  "background": "transparent",
+  "config": {
+    "view": {
+      "stroke": null
+    },
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 10,
+      "titleFontSize": 11,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "domainColor": "#d8cdb8",
+      "tickColor": "#d8cdb8"
+    },
+    "header": {
+      "labelFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "labelFontWeight": 600,
+      "labelColor": "#2a2a2a"
+    },
+    "legend": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 10,
+      "titleFontSize": 11,
+      "orient": "bottom",
+      "columns": 3,
+      "symbolType": "square",
+      "symbolSize": 100
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "Oceania & Antarctica",
+        "value": 410
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "North-West Europe",
+        "value": 9950
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "Southern & Eastern Europe",
+        "value": 760
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "North Africa & Middle East",
+        "value": 7420
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "South-East Asia",
+        "value": 13230
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "North-East Asia",
+        "value": 17350
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "Southern & Central Asia",
+        "value": 37600
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "Americas",
+        "value": 1330
+      },
+      {
+        "state": "New South Wales",
+        "state_code": "NSW",
+        "region": "Sub-Saharan Africa",
+        "value": 3730
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "Oceania & Antarctica",
+        "value": 3140
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "North-West Europe",
+        "value": 6710
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "Southern & Eastern Europe",
+        "value": 630
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "North Africa & Middle East",
+        "value": 5810
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "South-East Asia",
+        "value": 14390
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "North-East Asia",
+        "value": 14250
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "Southern & Central Asia",
+        "value": 38590
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "Americas",
+        "value": 700
+      },
+      {
+        "state": "Victoria",
+        "state_code": "VIC",
+        "region": "Sub-Saharan Africa",
+        "value": 3960
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "Oceania & Antarctica",
+        "value": 10220
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "North-West Europe",
+        "value": 6240
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "Southern & Eastern Europe",
+        "value": 1230
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "North Africa & Middle East",
+        "value": 2110
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "South-East Asia",
+        "value": 8020
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "North-East Asia",
+        "value": 8460
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "Southern & Central Asia",
+        "value": 13670
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "Americas",
+        "value": 1200
+      },
+      {
+        "state": "Queensland",
+        "state_code": "QLD",
+        "region": "Sub-Saharan Africa",
+        "value": 4640
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "Oceania & Antarctica",
+        "value": 110
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "North-West Europe",
+        "value": 850
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "Southern & Eastern Europe",
+        "value": 120
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "North Africa & Middle East",
+        "value": 1130
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "South-East Asia",
+        "value": 3130
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "North-East Asia",
+        "value": 2200
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "Southern & Central Asia",
+        "value": 9420
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "Americas",
+        "value": 260
+      },
+      {
+        "state": "South Australia",
+        "state_code": "SA",
+        "region": "Sub-Saharan Africa",
+        "value": 1280
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "Oceania & Antarctica",
+        "value": 2150
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "North-West Europe",
+        "value": 8170
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "Southern & Eastern Europe",
+        "value": 960
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "North Africa & Middle East",
+        "value": 1420
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "South-East Asia",
+        "value": 6430
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "North-East Asia",
+        "value": 2620
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "Southern & Central Asia",
+        "value": 13630
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "Americas",
+        "value": 630
+      },
+      {
+        "state": "Western Australia",
+        "state_code": "WA",
+        "region": "Sub-Saharan Africa",
+        "value": 3830
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "Oceania & Antarctica",
+        "value": 0
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "North-West Europe",
+        "value": 100
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "Southern & Eastern Europe",
+        "value": 20
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "North Africa & Middle East",
+        "value": 220
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "South-East Asia",
+        "value": 520
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "North-East Asia",
+        "value": 100
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "Southern & Central Asia",
+        "value": 1430
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "Americas",
+        "value": 60
+      },
+      {
+        "state": "Tasmania",
+        "state_code": "TAS",
+        "region": "Sub-Saharan Africa",
+        "value": 230
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "Oceania & Antarctica",
+        "value": 20
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "North-West Europe",
+        "value": 190
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "Southern & Eastern Europe",
+        "value": 110
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "North Africa & Middle East",
+        "value": 200
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "South-East Asia",
+        "value": 650
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "North-East Asia",
+        "value": 160
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "Southern & Central Asia",
+        "value": 1670
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "Americas",
+        "value": 140
+      },
+      {
+        "state": "Northern Territory",
+        "state_code": "NT",
+        "region": "Sub-Saharan Africa",
+        "value": 370
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "Oceania & Antarctica",
+        "value": -190
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "North-West Europe",
+        "value": 90
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "Southern & Eastern Europe",
+        "value": -20
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "North Africa & Middle East",
+        "value": 370
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "South-East Asia",
+        "value": 580
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "North-East Asia",
+        "value": 750
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "Southern & Central Asia",
+        "value": 3060
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "Americas",
+        "value": 100
+      },
+      {
+        "state": "Australian Capital Territory",
+        "state_code": "ACT",
+        "region": "Sub-Saharan Africa",
+        "value": 330
+      }
+    ]
+  },
+  "columns": 4,
+  "facet": {
+    "field": "state",
+    "type": "nominal",
+    "sort": [
+      "New South Wales",
+      "Victoria",
+      "Queensland",
+      "Western Australia",
+      "South Australia",
+      "Australian Capital Territory",
+      "Northern Territory",
+      "Tasmania"
+    ],
+    "header": {"title": null}
+  },
+  "spec": {
+    "width": 220,
+    "height": 50,
+    "mark": {
+      "type": "bar",
+      "height": 22
+    },
+    "encoding": {
+      "x": {
+        "field": "value",
+        "type": "quantitative",
+        "stack": "normalize",
+        "axis": {
+          "title": null,
+          "format": "%",
+          "grid": false,
+          "values": [
+            0,
+            0.5,
+            1
+          ]
+        }
+      },
+      "color": {
+        "field": "region",
+        "type": "nominal",
+        "scale": {
+          "domain": [
+            "Southern & Central Asia",
+            "North-East Asia",
+            "South-East Asia",
+            "North-West Europe",
+            "Southern & Eastern Europe",
+            "Sub-Saharan Africa",
+            "North Africa & Middle East",
+            "Oceania & Antarctica",
+            "Americas"
+          ],
+          "range": [
+            "#c14a26",
+            "#d97a4f",
+            "#e5a06d",
+            "#1e5f74",
+            "#3d8aa3",
+            "#6b7960",
+            "#a48b5e",
+            "#d29b3a",
+            "#7e6c4c"
+          ]
+        },
+        "legend": {
+          "title": "Region"
+        }
+      },
+      "order": {
+        "field": "region"
+      },
+      "tooltip": [
+        {
+          "field": "state",
+          "type": "nominal",
+          "title": "State"
+        },
+        {
+          "field": "region",
+          "type": "nominal",
+          "title": "Region"
+        },
+        {
+          "field": "value",
+          "type": "quantitative",
+          "title": "Net migration",
+          "format": ","
+        }
+      ]
+    }
+  }
+}

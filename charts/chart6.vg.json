@@ -1,0 +1,80 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Heatmap of net overseas migration for the top 8 source countries, 2004-05 to 2024-25.",
+  "width": "container",
+  "height": 280,
+  "background": "transparent",
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 12,
+      "labelColor": "#5a5145",
+      "titleColor": "#2a2a2a",
+      "grid": false,
+      "domain": false,
+      "ticks": false
+    },
+    "legend": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "orient": "right",
+      "gradientThickness": 12,
+      "gradientLength": 200
+    },
+    "font": "Inter Tight, sans-serif"
+  },
+  "data": {
+    "values": [
+      {"country":"New Zealand","year":2004,"value":16870},{"country":"New Zealand","year":2005,"value":18090},{"country":"New Zealand","year":2006,"value":22100},{"country":"New Zealand","year":2007,"value":27730},{"country":"New Zealand","year":2008,"value":23150},{"country":"New Zealand","year":2009,"value":15780},{"country":"New Zealand","year":2010,"value":29040},{"country":"New Zealand","year":2011,"value":34540},{"country":"New Zealand","year":2012,"value":24740},{"country":"New Zealand","year":2013,"value":7240},{"country":"New Zealand","year":2014,"value":930},{"country":"New Zealand","year":2015,"value":1480},{"country":"New Zealand","year":2016,"value":1850},{"country":"New Zealand","year":2017,"value":3010},{"country":"New Zealand","year":2018,"value":3330},{"country":"New Zealand","year":2019,"value":-360},{"country":"New Zealand","year":2020,"value":-2150},{"country":"New Zealand","year":2021,"value":5370},{"country":"New Zealand","year":2022,"value":15950},{"country":"New Zealand","year":2023,"value":22910},{"country":"New Zealand","year":2024,"value":24320},
+      {"country":"UK","year":2005,"value":22470},{"country":"UK","year":2006,"value":27690},{"country":"UK","year":2007,"value":31720},{"country":"UK","year":2008,"value":33410},{"country":"UK","year":2009,"value":30030},{"country":"UK","year":2010,"value":20860},{"country":"UK","year":2011,"value":24820},{"country":"UK","year":2012,"value":31430},{"country":"UK","year":2013,"value":25020},{"country":"UK","year":2014,"value":12260},{"country":"UK","year":2015,"value":9400},{"country":"UK","year":2016,"value":9140},{"country":"UK","year":2017,"value":10460},{"country":"UK","year":2018,"value":7830},{"country":"UK","year":2019,"value":7440},{"country":"UK","year":2020,"value":10670},{"country":"UK","year":2021,"value":-960},{"country":"UK","year":2022,"value":2760},{"country":"UK","year":2023,"value":19550},{"country":"UK","year":2024,"value":23550},
+      {"country":"Vietnam","year":2004,"value":2540},{"country":"Vietnam","year":2005,"value":3740},{"country":"Vietnam","year":2006,"value":5360},{"country":"Vietnam","year":2007,"value":7490},{"country":"Vietnam","year":2008,"value":9150},{"country":"Vietnam","year":2009,"value":6800},{"country":"Vietnam","year":2010,"value":4780},{"country":"Vietnam","year":2011,"value":4720},{"country":"Vietnam","year":2012,"value":7990},{"country":"Vietnam","year":2013,"value":8750},{"country":"Vietnam","year":2014,"value":7320},{"country":"Vietnam","year":2015,"value":7830},{"country":"Vietnam","year":2016,"value":8120},{"country":"Vietnam","year":2017,"value":7250},{"country":"Vietnam","year":2018,"value":7880},{"country":"Vietnam","year":2019,"value":7470},{"country":"Vietnam","year":2020,"value":-1420},{"country":"Vietnam","year":2021,"value":8310},{"country":"Vietnam","year":2022,"value":18800},{"country":"Vietnam","year":2023,"value":20350},{"country":"Vietnam","year":2024,"value":9250},
+      {"country":"Philippines","year":2004,"value":5320},{"country":"Philippines","year":2005,"value":6650},{"country":"Philippines","year":2006,"value":9370},{"country":"Philippines","year":2007,"value":11900},{"country":"Philippines","year":2008,"value":12110},{"country":"Philippines","year":2009,"value":9030},{"country":"Philippines","year":2010,"value":9620},{"country":"Philippines","year":2011,"value":14550},{"country":"Philippines","year":2012,"value":14210},{"country":"Philippines","year":2013,"value":12830},{"country":"Philippines","year":2014,"value":12430},{"country":"Philippines","year":2015,"value":13000},{"country":"Philippines","year":2016,"value":13590},{"country":"Philippines","year":2017,"value":12620},{"country":"Philippines","year":2018,"value":18400},{"country":"Philippines","year":2019,"value":15350},{"country":"Philippines","year":2020,"value":1080},{"country":"Philippines","year":2021,"value":12930},{"country":"Philippines","year":2022,"value":43330},{"country":"Philippines","year":2023,"value":31670},{"country":"Philippines","year":2024,"value":19440},
+      {"country":"China","year":2004,"value":19090},{"country":"China","year":2005,"value":19970},{"country":"China","year":2006,"value":27880},{"country":"China","year":2007,"value":36340},{"country":"China","year":2008,"value":33590},{"country":"China","year":2009,"value":28340},{"country":"China","year":2010,"value":17680},{"country":"China","year":2011,"value":15510},{"country":"China","year":2012,"value":22580},{"country":"China","year":2013,"value":30800},{"country":"China","year":2014,"value":39070},{"country":"China","year":2015,"value":45480},{"country":"China","year":2016,"value":50020},{"country":"China","year":2017,"value":44610},{"country":"China","year":2018,"value":20170},{"country":"China","year":2019,"value":-18590},{"country":"China","year":2020,"value":-50270},{"country":"China","year":2021,"value":15100},{"country":"China","year":2022,"value":59570},{"country":"China","year":2023,"value":46580},{"country":"China","year":2024,"value":35160},
+      {"country":"India","year":2004,"value":16340},{"country":"India","year":2005,"value":21820},{"country":"India","year":2006,"value":37080},{"country":"India","year":2007,"value":49780},{"country":"India","year":2008,"value":59960},{"country":"India","year":2009,"value":24060},{"country":"India","year":2010,"value":9230},{"country":"India","year":2011,"value":18760},{"country":"India","year":2012,"value":23670},{"country":"India","year":2013,"value":33340},{"country":"India","year":2014,"value":38400},{"country":"India","year":2015,"value":40860},{"country":"India","year":2016,"value":49730},{"country":"India","year":2017,"value":55860},{"country":"India","year":2018,"value":73190},{"country":"India","year":2019,"value":59810},{"country":"India","year":2020,"value":-10650},{"country":"India","year":2021,"value":43570},{"country":"India","year":2022,"value":95030},{"country":"India","year":2023,"value":70130},{"country":"India","year":2024,"value":57410},
+      {"country":"Nepal","year":2004,"value":410},{"country":"Nepal","year":2005,"value":930},{"country":"Nepal","year":2006,"value":4130},{"country":"Nepal","year":2007,"value":7960},{"country":"Nepal","year":2008,"value":11250},{"country":"Nepal","year":2009,"value":2740},{"country":"Nepal","year":2010,"value":740},{"country":"Nepal","year":2011,"value":2080},{"country":"Nepal","year":2012,"value":3180},{"country":"Nepal","year":2013,"value":7310},{"country":"Nepal","year":2014,"value":6410},{"country":"Nepal","year":2015,"value":7970},{"country":"Nepal","year":2016,"value":14880},{"country":"Nepal","year":2017,"value":21000},{"country":"Nepal","year":2018,"value":24060},{"country":"Nepal","year":2019,"value":13340},{"country":"Nepal","year":2020,"value":-2090},{"country":"Nepal","year":2021,"value":21020},{"country":"Nepal","year":2022,"value":28020},{"country":"Nepal","year":2023,"value":18160},{"country":"Nepal","year":2024,"value":16310},
+      {"country":"South Africa","year":2004,"value":5500},{"country":"South Africa","year":2005,"value":7530},{"country":"South Africa","year":2006,"value":8450},{"country":"South Africa","year":2007,"value":11080},{"country":"South Africa","year":2008,"value":12870},{"country":"South Africa","year":2009,"value":5820},{"country":"South Africa","year":2010,"value":6280},{"country":"South Africa","year":2011,"value":6950},{"country":"South Africa","year":2012,"value":5520},{"country":"South Africa","year":2013,"value":3710},{"country":"South Africa","year":2014,"value":3460},{"country":"South Africa","year":2015,"value":4080},{"country":"South Africa","year":2016,"value":5580},{"country":"South Africa","year":2017,"value":4680},{"country":"South Africa","year":2018,"value":5990},{"country":"South Africa","year":2019,"value":6380},{"country":"South Africa","year":2020,"value":2560},{"country":"South Africa","year":2021,"value":4980},{"country":"South Africa","year":2022,"value":9170},{"country":"South Africa","year":2023,"value":10130},{"country":"South Africa","year":2024,"value":6590}
+    ]
+  },
+  "transform": [
+    {"calculate": "datum.year + '-' + slice(toString(datum.year + 1), 2, 4)", "as": "fy"}
+  ],
+  "mark": {"type": "rect", "strokeWidth": 1, "stroke": "#faf7f2"},
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "axis": {
+        "title": null,
+        "labelExpr": "datum.value + '-' + slice(toString(datum.value + 1), 2, 4)",
+        "labelAngle": -50,
+        "orient": "bottom"
+      }
+    },
+    "y": {
+      "field": "country",
+      "type": "nominal",
+      "sort": {"op": "sum", "field": "value", "order": "descending"},
+      "axis": {"title": null}
+    },
+    "color": {
+      "field": "value",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "redyellowblue",
+        "reverse": true,
+        "domainMid": 0
+      },
+      "legend": {"title": "Net migration"}
+    },
+    "tooltip": [
+      {"field": "country", "type": "nominal", "title": "Country"},
+      {"field": "fy", "type": "nominal", "title": "Year"},
+      {"field": "value", "type": "quantitative", "title": "Net migration", "format": ","}
+    ]
+  }
+}
