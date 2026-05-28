@@ -4,6 +4,7 @@
   "width": "container",
   "height": 280,
   "background": "transparent",
+  "padding": {"left": 10, "right": 10, "top": 60, "bottom": 10},
   "config": {
     "view": {"stroke": null},
     "axis": {
@@ -43,7 +44,6 @@
   "transform": [
     {"calculate": "datum.year + '-' + slice(toString(datum.year + 1), 2, 4)", "as": "fy"}
   ],
-  "mark": {"type": "rect", "strokeWidth": 1, "stroke": "#faf7f2"},
   "encoding": {
     "x": {
       "field": "year",
@@ -60,21 +60,67 @@
       "type": "nominal",
       "sort": {"op": "sum", "field": "value", "order": "descending"},
       "axis": {"title": null}
+    }
+  },
+  "layer": [
+    {
+      "mark": {"type": "rect", "strokeWidth": 1, "stroke": "#faf7f2"},
+      "encoding": {
+        "color": {
+          "field": "value",
+          "type": "quantitative",
+          "scale": {
+            "scheme": "redyellowblue",
+            "reverse": true,
+            "domainMid": 0
+          },
+          "legend": {"title": "Net migration"}
+        },
+        "tooltip": [
+          {"field": "country", "type": "nominal", "title": "Country"},
+          {"field": "fy", "type": "nominal", "title": "Year"},
+          {"field": "value", "type": "quantitative", "title": "Net migration", "format": ","}
+        ]
+      }
     },
-    "color": {
-      "field": "value",
-      "type": "quantitative",
-      "scale": {
-        "scheme": "redyellowblue",
-        "reverse": true,
-        "domainMid": 0
+    {
+      "data": {
+        "values": [
+          {"year": 2020, "country": "China"}
+        ]
       },
-      "legend": {"title": "Net migration"}
+      "mark": {
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 1.5,
+        "yOffset": -25
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "country", "type": "nominal"},
+        "y2": {"datum": "China"}
+      }
     },
-    "tooltip": [
-      {"field": "country", "type": "nominal", "title": "Country"},
-      {"field": "fy", "type": "nominal", "title": "Year"},
-      {"field": "value", "type": "quantitative", "title": "Net migration", "format": ","}
-    ]
-  }
+    {
+      "data": {
+        "values": [
+          {"year": 2020, "country": "China", "label": "The deepest single-year decline, due to border closures"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontStyle": "italic",
+        "fontSize": 11,
+        "color": "#1a1a1a",
+        "dy": -32,
+        "fontWeight": 500,
+        "align": "center"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "country", "type": "nominal"},
+        "text": {"field": "label"}
+      }
+    }
+  ]
 }

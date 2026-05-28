@@ -4,7 +4,7 @@
   "width": "container",
   "height": 380,
   "background": "transparent",
-  "padding": {"left": 90, "right": 100, "top": 20, "bottom": 40},
+  "padding": {"left": 90, "right": 100, "top": 60, "bottom": 40},
   "config": {
     "view": {"stroke": null},
     "axis": {
@@ -235,6 +235,46 @@
         "y": {"field": "rank", "type": "quantitative"},
         "text": {"field": "country"},
         "color": {"field": "country", "type": "nominal", "legend": null}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2010, "rank": 1, "rankEnd": 0.2},
+          {"year": 2020, "rank": 1, "rankEnd": 0.2}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "rank", "type": "quantitative"},
+        "y2": {"field": "rankEnd"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"year": 2010, "rank": 0.2, "label": "New Zealand briefly takes the lead"},
+          {"year": 2020, "rank": 0.2, "label": "UK leads only because others collapsed"}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontStyle": "italic",
+        "fontSize": 11,
+        "color": "#1a1a1a",
+        "dy": -8,
+        "fontWeight": 500,
+        "align": "center"
+      },
+      "encoding": {
+        "x": {"field": "year", "type": "ordinal"},
+        "y": {"field": "rank", "type": "quantitative"},
+        "text": {"field": "label"}
       }
     }
   ]

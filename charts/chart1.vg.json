@@ -64,6 +64,7 @@
     "y": {
       "field": "value",
       "type": "quantitative",
+      "scale": {"domain": [-120000, 620000]},
       "axis": {
         "title": "Net Overseas Migration (persons)",
         "format": ",.0f",
@@ -72,6 +73,24 @@
     }
   },
   "layer": [
+    {
+      "data": {
+        "values": [
+          {"x_start": 2019, "x_end": 2021}
+        ]
+      },
+      "mark": {
+        "type": "rect",
+        "color": "#5a5145",
+        "opacity": 0.12
+      },
+      "encoding": {
+        "x":  {"field": "x_start", "type": "quantitative"},
+        "x2": {"field": "x_end"},
+        "y":  {"value": 0},
+        "y2": {"value": 360}
+      }
+    },
     {
       "mark": {
         "type": "area",
@@ -106,8 +125,27 @@
     {
       "data": {
         "values": [
-          {"year": 2020, "value": -84940, "label": "COVID border closures"},
-          {"year": 2022, "value": 538340, "label": "Record post-pandemic rebound"}
+          {"x": 2020, "y": -84940, "x2": 2017.5, "y2": -84940},
+          {"x": 2022, "y": 538340, "x2": 2022, "y2": 600000}
+        ]
+      },
+      "mark": {
+        "type": "rule",
+        "color": "#1a1a1a",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "x":  {"field": "x",  "type": "quantitative"},
+        "x2": {"field": "x2"},
+        "y":  {"field": "y",  "type": "quantitative"},
+        "y2": {"field": "y2"}
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"x": 2014, "y": -84940, "label": "COVID border closures", "align": "right"},
+          {"x": 2020, "y": 610000, "label": "Record post-pandemic rebound", "align": "center"}
         ]
       },
       "mark": {
@@ -115,12 +153,13 @@
         "fontStyle": "italic",
         "fontSize": 11,
         "color": "#1a1a1a",
-        "dy": -14
+        "fontWeight": 500
       },
       "encoding": {
-        "x": {"field": "year", "type": "quantitative"},
-        "y": {"field": "value", "type": "quantitative"},
-        "text": {"field": "label"}
+        "x": {"field": "x", "type": "quantitative"},
+        "y": {"field": "y", "type": "quantitative"},
+        "text": {"field": "label"},
+        "align": {"field": "align", "type": "nominal"}
       }
     },
     {

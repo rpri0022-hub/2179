@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "Net overseas migration per 1,000 residents by state, 2024-25. Derived by combining ABS Migration figures with ABS June 2024 Population estimates. Reveals that smaller territories receive a far larger relative share than their population would suggest.",
-  "width": 700,
-  "height": 320,
+  "description": "Net migration heatmap by state × visa class, 2024-25. Each row is a visa category, each column is a state or territory. Colour encodes net flow (arrivals minus departures). Reveals which visa types drive each state's overseas migration profile, using the eight state-level visa CSVs combined.",
+  "width": "container",
+  "height": 380,
   "background": "transparent",
   "config": {
     "view": {
@@ -11,170 +11,196 @@
     "axis": {
       "labelFont": "Inter Tight, sans-serif",
       "titleFont": "Inter Tight, sans-serif",
-      "labelFontSize": 12,
+      "labelFontSize": 11,
       "titleFontSize": 12,
       "labelColor": "#5a5145",
       "titleColor": "#2a2a2a",
-      "domainColor": "#d8cdb8",
-      "tickColor": "#d8cdb8",
-      "gridColor": "#ece3d4"
+      "domain": false,
+      "ticks": false
+    },
+    "legend": {
+      "labelFont": "Inter Tight, sans-serif",
+      "titleFont": "Inter Tight, sans-serif",
+      "labelFontSize": 11,
+      "titleFontSize": 11,
+      "orient": "right",
+      "gradientThickness": 12,
+      "gradientLength": 200
     },
     "font": "Inter Tight, sans-serif"
   },
   "data": {
     "values": [
-      {
-        "state": "New South Wales",
-        "state_code": "NSW",
-        "nom_overseas": 97270,
-        "nom_australian": -5700,
-        "nom_total": 91570,
-        "population": 8469600,
-        "per_1000": 10.81
-      },
-      {
-        "state": "Victoria",
-        "state_code": "VIC",
-        "nom_overseas": 92410,
-        "nom_australian": -4640,
-        "nom_total": 87770,
-        "population": 6981400,
-        "per_1000": 12.57
-      },
-      {
-        "state": "Queensland",
-        "state_code": "QLD",
-        "nom_overseas": 58730,
-        "nom_australian": -2990,
-        "nom_total": 55740,
-        "population": 5560500,
-        "per_1000": 10.02
-      },
-      {
-        "state": "South Australia",
-        "state_code": "SA",
-        "nom_overseas": 19540,
-        "nom_australian": -810,
-        "nom_total": 18730,
-        "population": 1873000,
-        "per_1000": 10.0
-      },
-      {
-        "state": "Western Australia",
-        "state_code": "WA",
-        "nom_overseas": 42420,
-        "nom_australian": -2010,
-        "nom_total": 40410,
-        "population": 2981400,
-        "per_1000": 13.55
-      },
-      {
-        "state": "Tasmania",
-        "state_code": "TAS",
-        "nom_overseas": 2970,
-        "nom_australian": -250,
-        "nom_total": 2720,
-        "population": 575700,
-        "per_1000": 4.72
-      },
-      {
-        "state": "Northern Territory",
-        "state_code": "NT",
-        "nom_overseas": 3850,
-        "nom_australian": -240,
-        "nom_total": 3610,
-        "population": 256200,
-        "per_1000": 14.09
-      },
-      {
-        "state": "Australian Capital Territory",
-        "state_code": "ACT",
-        "nom_overseas": 5410,
-        "nom_australian": -430,
-        "nom_total": 4980,
-        "population": 475300,
-        "per_1000": 10.48
-      }
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Family", "arrivals": 8460, "departures": 1730, "net": 6730},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Skilled (permanent)", "arrivals": 12560, "departures": 1510, "net": 11050},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Special eligibility & humanitarian", "arrivals": 4440, "departures": 70, "net": 4370},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Other (permanent)", "arrivals": 3170, "departures": 2980, "net": 190},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Student - vocational education and training", "arrivals": 2910, "departures": 4780, "net": -1870},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Student - higher education", "arrivals": 45620, "departures": 11960, "net": 33660},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Student - other", "arrivals": 6500, "departures": 2340, "net": 4160},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Skilled (temporary)", "arrivals": 14560, "departures": 4420, "net": 10140},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Working holiday", "arrivals": 25240, "departures": 7840, "net": 17400},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Visitors", "arrivals": 19600, "departures": 6320, "net": 13280},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Other (temporary)", "arrivals": 7540, "departures": 15530, "net": -7990},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "New Zealand citizens (subclass 444)", "arrivals": 10050, "departures": 3560, "net": 6490},
+      {"state": "New South Wales", "state_code": "NSW", "visa": "Australian citizens (no visa)", "arrivals": 22080, "departures": 28130, "net": -6050},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Family", "arrivals": 8270, "departures": 1380, "net": 6890},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Skilled (permanent)", "arrivals": 9980, "departures": 1480, "net": 8500},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Special eligibility & humanitarian", "arrivals": 5690, "departures": 60, "net": 5630},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Other (permanent)", "arrivals": 2780, "departures": 2520, "net": 260},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Student - vocational education and training", "arrivals": 2260, "departures": 3360, "net": -1100},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Student - higher education", "arrivals": 41560, "departures": 8600, "net": 32960},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Student - other", "arrivals": 6280, "departures": 2410, "net": 3870},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Skilled (temporary)", "arrivals": 9890, "departures": 2510, "net": 7380},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Working holiday", "arrivals": 18410, "departures": 5710, "net": 12700},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Visitors", "arrivals": 16490, "departures": 5110, "net": 11380},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Other (temporary)", "arrivals": 6860, "departures": 13630, "net": -6770},
+      {"state": "Victoria", "state_code": "VIC", "visa": "New Zealand citizens (subclass 444)", "arrivals": 14240, "departures": 3420, "net": 10820},
+      {"state": "Victoria", "state_code": "VIC", "visa": "Australian citizens (no visa)", "arrivals": 16350, "departures": 21100, "net": -4750},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Family", "arrivals": 3100, "departures": 840, "net": 2260},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Skilled (permanent)", "arrivals": 4820, "departures": 830, "net": 3990},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Special eligibility & humanitarian", "arrivals": 2230, "departures": 30, "net": 2200},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Other (permanent)", "arrivals": 1260, "departures": 1310, "net": -50},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Student - vocational education and training", "arrivals": 1940, "departures": 2490, "net": -550},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Student - higher education", "arrivals": 15000, "departures": 4140, "net": 10860},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Student - other", "arrivals": 5010, "departures": 1690, "net": 3320},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Skilled (temporary)", "arrivals": 9560, "departures": 1360, "net": 8200},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Working holiday", "arrivals": 17030, "departures": 5660, "net": 11370},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Visitors", "arrivals": 9120, "departures": 3380, "net": 5740},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Other (temporary)", "arrivals": 5280, "departures": 8350, "net": -3070},
+      {"state": "Queensland", "state_code": "QLD", "visa": "New Zealand citizens (subclass 444)", "arrivals": 19070, "departures": 4870, "net": 14200},
+      {"state": "Queensland", "state_code": "QLD", "visa": "Australian citizens (no visa)", "arrivals": 12520, "departures": 15250, "net": -2730},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Family", "arrivals": 2310, "departures": 530, "net": 1780},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Skilled (permanent)", "arrivals": 4980, "departures": 660, "net": 4320},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Special eligibility & humanitarian", "arrivals": 690, "departures": 20, "net": 670},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Other (permanent)", "arrivals": 830, "departures": 1000, "net": -170},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Student - vocational education and training", "arrivals": 920, "departures": 750, "net": 170},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Student - higher education", "arrivals": 12770, "departures": 1580, "net": 11190},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Student - other", "arrivals": 1540, "departures": 610, "net": 930},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Skilled (temporary)", "arrivals": 8170, "departures": 1370, "net": 6800},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Working holiday", "arrivals": 13930, "departures": 4570, "net": 9360},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Visitors", "arrivals": 5990, "departures": 1980, "net": 4010},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Other (temporary)", "arrivals": 2890, "departures": 4490, "net": -1600},
+      {"state": "Western Australia", "state_code": "WA", "visa": "New Zealand citizens (subclass 444)", "arrivals": 7420, "departures": 2280, "net": 5140},
+      {"state": "Western Australia", "state_code": "WA", "visa": "Australian citizens (no visa)", "arrivals": 7100, "departures": 9310, "net": -2210},
+      {"state": "South Australia", "state_code": "SA", "visa": "Family", "arrivals": 1630, "departures": 190, "net": 1440},
+      {"state": "South Australia", "state_code": "SA", "visa": "Skilled (permanent)", "arrivals": 4430, "departures": 350, "net": 4080},
+      {"state": "South Australia", "state_code": "SA", "visa": "Special eligibility & humanitarian", "arrivals": 1280, "departures": 10, "net": 1270},
+      {"state": "South Australia", "state_code": "SA", "visa": "Other (permanent)", "arrivals": 320, "departures": 340, "net": -20},
+      {"state": "South Australia", "state_code": "SA", "visa": "Student - vocational education and training", "arrivals": 470, "departures": 440, "net": 30},
+      {"state": "South Australia", "state_code": "SA", "visa": "Student - higher education", "arrivals": 7060, "departures": 1030, "net": 6030},
+      {"state": "South Australia", "state_code": "SA", "visa": "Student - other", "arrivals": 1410, "departures": 500, "net": 910},
+      {"state": "South Australia", "state_code": "SA", "visa": "Skilled (temporary)", "arrivals": 1810, "departures": 230, "net": 1580},
+      {"state": "South Australia", "state_code": "SA", "visa": "Working holiday", "arrivals": 2160, "departures": 550, "net": 1610},
+      {"state": "South Australia", "state_code": "SA", "visa": "Visitors", "arrivals": 2700, "departures": 800, "net": 1900},
+      {"state": "South Australia", "state_code": "SA", "visa": "Other (temporary)", "arrivals": 1890, "departures": 2050, "net": -160},
+      {"state": "South Australia", "state_code": "SA", "visa": "New Zealand citizens (subclass 444)", "arrivals": 1090, "departures": 250, "net": 840},
+      {"state": "South Australia", "state_code": "SA", "visa": "Australian citizens (no visa)", "arrivals": 2870, "departures": 3650, "net": -780},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Family", "arrivals": 140, "departures": 50, "net": 90},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Skilled (permanent)", "arrivals": 960, "departures": 170, "net": 790},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Special eligibility & humanitarian", "arrivals": 250, "departures": 0, "net": 250},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Other (permanent)", "arrivals": 40, "departures": 60, "net": -20},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Student - vocational education and training", "arrivals": 50, "departures": 50, "net": 0},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Student - higher education", "arrivals": 490, "departures": 80, "net": 410},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Student - other", "arrivals": 170, "departures": 50, "net": 120},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Skilled (temporary)", "arrivals": 530, "departures": 50, "net": 480},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Working holiday", "arrivals": 490, "departures": 220, "net": 270},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Visitors", "arrivals": 530, "departures": 180, "net": 350},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Other (temporary)", "arrivals": 620, "departures": 660, "net": -40},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "New Zealand citizens (subclass 444)", "arrivals": 340, "departures": 110, "net": 230},
+      {"state": "Tasmania", "state_code": "TAS", "visa": "Australian citizens (no visa)", "arrivals": 700, "departures": 900, "net": -200},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Family", "arrivals": 100, "departures": 40, "net": 60},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Skilled (permanent)", "arrivals": 880, "departures": 60, "net": 820},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Special eligibility & humanitarian", "arrivals": 120, "departures": 0, "net": 120},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Other (permanent)", "arrivals": 30, "departures": 50, "net": -20},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Student - vocational education and training", "arrivals": 50, "departures": 30, "net": 20},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Student - higher education", "arrivals": 830, "departures": 20, "net": 810},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Student - other", "arrivals": 90, "departures": 30, "net": 60},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Skilled (temporary)", "arrivals": 750, "departures": 60, "net": 690},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Working holiday", "arrivals": 820, "departures": 300, "net": 520},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Visitors", "arrivals": 600, "departures": 210, "net": 390},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Other (temporary)", "arrivals": 510, "departures": 400, "net": 110},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "New Zealand citizens (subclass 444)", "arrivals": 410, "departures": 130, "net": 280},
+      {"state": "Northern Territory", "state_code": "NT", "visa": "Australian citizens (no visa)", "arrivals": 390, "departures": 640, "net": -250},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Family", "arrivals": 380, "departures": 90, "net": 290},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Skilled (permanent)", "arrivals": 1790, "departures": 140, "net": 1650},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Special eligibility & humanitarian", "arrivals": 170, "departures": 0, "net": 170},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Other (permanent)", "arrivals": 100, "departures": 130, "net": -30},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Student - vocational education and training", "arrivals": 90, "departures": 90, "net": 0},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Student - higher education", "arrivals": 2940, "departures": 1230, "net": 1710},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Student - other", "arrivals": 740, "departures": 390, "net": 350},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Skilled (temporary)", "arrivals": 510, "departures": 70, "net": 440},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Working holiday", "arrivals": 250, "departures": 90, "net": 160},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Visitors", "arrivals": 1050, "departures": 380, "net": 670},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Other (temporary)", "arrivals": 590, "departures": 810, "net": -220},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "New Zealand citizens (subclass 444)", "arrivals": 390, "departures": 110, "net": 280},
+      {"state": "Australian Capital Territory", "state_code": "ACT", "visa": "Australian citizens (no visa)", "arrivals": 2020, "departures": 2500, "net": -480}
     ]
   },
-  "layer": [
-    {
-      "mark": {
-        "type": "bar",
-        "cornerRadiusEnd": 4,
-        "height": 22,
-        "color": "#1e5f74"
-      },
-      "encoding": {
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "sort": "-x",
-          "axis": {
-            "title": null,
-            "labelLimit": 200
-          }
-        },
-        "x": {
-          "field": "per_1000",
-          "type": "quantitative",
-          "axis": {
-            "title": "Net migration per 1,000 residents",
-            "grid": true
-          }
-        },
-        "tooltip": [
-          {
-            "field": "state",
-            "type": "nominal",
-            "title": "State"
-          },
-          {
-            "field": "nom_total",
-            "type": "quantitative",
-            "title": "Net migration",
-            "format": ","
-          },
-          {
-            "field": "population",
-            "type": "quantitative",
-            "title": "Population",
-            "format": ","
-          },
-          {
-            "field": "per_1000",
-            "type": "quantitative",
-            "title": "Per 1,000",
-            "format": ".2f"
-          }
-        ]
+  "mark": {
+    "type": "rect",
+    "stroke": "#faf7f2",
+    "strokeWidth": 2
+  },
+  "encoding": {
+    "x": {
+      "field": "state_code",
+      "type": "nominal",
+      "sort": ["NSW", "VIC", "QLD", "WA", "SA", "ACT", "NT", "TAS"],
+      "axis": {
+        "title": null,
+        "orient": "top",
+        "labelFontWeight": 600,
+        "labelFontSize": 12,
+        "labelPadding": 12,
+        "labelAngle": 0,
+        "labelAlign": "center",
+        "labelBaseline": "middle"
       }
     },
-    {
-      "mark": {
-        "type": "text",
-        "align": "left",
-        "dx": 6,
-        "fontSize": 11,
-        "fontWeight": 500,
-        "color": "#2a2a2a"
-      },
-      "encoding": {
-        "y": {
-          "field": "state",
-          "type": "nominal",
-          "sort": "-x"
-        },
-        "x": {
-          "field": "per_1000",
-          "type": "quantitative"
-        },
-        "text": {
-          "field": "per_1000",
-          "type": "quantitative",
-          "format": ".1f"
-        }
+    "y": {
+      "field": "visa",
+      "type": "nominal",
+      "sort": [
+        "Student - higher education",
+        "Working holiday",
+        "New Zealand citizens (subclass 444)",
+        "Visitors",
+        "Skilled (temporary)",
+        "Skilled (permanent)",
+        "Family",
+        "Special eligibility & humanitarian",
+        "Student - other",
+        "Other (permanent)",
+        "Student - vocational education and training",
+        "Australian citizens (no visa)",
+        "Other (temporary)"
+      ],
+      "axis": {
+        "title": null,
+        "labelLimit": 230,
+        "labelPadding": 14
       }
-    }
-  ]
+    },
+    "color": {
+      "field": "net",
+      "type": "quantitative",
+      "scale": {
+        "scheme": "redyellowblue",
+        "reverse": true,
+        "domainMid": 0
+      },
+      "legend": {
+        "title": "Net flow",
+        "format": ",.0f"
+      }
+    },
+    "tooltip": [
+      {"field": "state", "type": "nominal", "title": "State"},
+      {"field": "visa", "type": "nominal", "title": "Visa class"},
+      {"field": "arrivals", "type": "quantitative", "title": "Arrivals", "format": ","},
+      {"field": "departures", "type": "quantitative", "title": "Departures", "format": ","},
+      {"field": "net", "type": "quantitative", "title": "Net", "format": "+,"}
+    ]
+  }
 }

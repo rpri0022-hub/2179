@@ -11,7 +11,8 @@
  --rule-soft:    #e8e0d3;
 
 
- --accent:       #c14a26;
+ --accent:       #b87764;
+ --acc:           rgb(253, 244, 216);
  --accent-dark:  #7a2f17;
  --accent-soft:  rgba(193, 74, 38, 0.08);
  --teal:         #1e5f74;
@@ -425,7 +426,7 @@ p:last-child { margin-bottom: 0; }
 /* Sources */
 .source-list, .file-list { list-style: none; }
 .source-list li {
- padding: 0.55rem 0 0.55rem 1rem;
+ padding: 0.55rem 0;
  border-top: 1px dashed var(--rule-soft);
  position: relative;
  font-size: 0.92rem;
@@ -433,14 +434,6 @@ p:last-child { margin-bottom: 0; }
  color: var(--ink-soft);
 }
 .source-list li:first-child { border-top: none; }
-.source-list li::before {
- content: '§';
- position: absolute; left: 0; top: 0.6rem;
- color: var(--accent);
- font-family: var(--serif);
- font-style: italic;
- font-size: 0.95rem;
-}
 .source-list a { font-family: var(--mono); font-size: 0.82rem; }
 
 

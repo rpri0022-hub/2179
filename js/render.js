@@ -11,7 +11,6 @@ const CHARTS = [
  { id: 'chart-10', spec: 'charts/chart10.vg.json' },
  { id: 'chart-11', spec: 'charts/chart11.vg.json' },
  { id: 'chart-12', spec: 'charts/chart12.vg.json' },
- { id: 'chart-13', spec: 'charts/chart13.vg.json' },
 ];
 
 

@@ -44,7 +44,7 @@
       {"state": "South Australia",              "lon": 135.5, "lat": -30.0},
       {"state": "Tasmania",                     "lon": 146.7, "lat": -42.0},
       {"state": "Northern Territory",           "lon": 133.5, "lat": -19.5},
-      {"state": "Australian Capital Territory", "lon": 152.5, "lat": -35.3}
+      {"state": "Australian Capital Territory", "lon": 153.5, "lat": -35.3}
     ],
     "label_positions_number": [
       {"state": "New South Wales",              "lon": 147.5, "lat": -33.7},
@@ -54,7 +54,18 @@
       {"state": "South Australia",              "lon": 135.5, "lat": -30.9},
       {"state": "Tasmania",                     "lon": 146.7, "lat": -42.9},
       {"state": "Northern Territory",           "lon": 133.5, "lat": -20.4},
-      {"state": "Australian Capital Territory", "lon": 152.5, "lat": -36.2}
+      {"state": "Australian Capital Territory", "lon": 153.5, "lat": -36.2}
+    ],
+    "annotation_line": [
+      {"lon": 133.5, "lat": -18.5},
+      {"lon": 119.0, "lat": -14.0}
+    ],
+    "annotation_label": [
+      {"lon": 111.0, "lat": -12.5, "label": "Northern Territory records the highest|migration per capita despite small|population size"}
+    ],
+    "act_leader_line": [
+      {"lon": 149.13, "lat": -35.45},
+      {"lon": 152.3,  "lat": -35.3}
     ]
   },
 
@@ -133,6 +144,53 @@
         "longitude": {"field": "lon", "type": "quantitative"},
         "latitude":  {"field": "lat", "type": "quantitative"},
         "text":      {"field": "label"}
+      }
+    },
+
+    {
+      "data": {"name": "annotation_line"},
+      "mark": {
+        "type": "line",
+        "color": "#1a1a1a",
+        "strokeWidth": 1.2
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "order": {"value": 1}
+      }
+    },
+
+    {
+      "data": {"name": "annotation_label"},
+      "mark": {
+        "type": "text",
+        "fontStyle": "italic",
+        "fontSize": 11,
+        "fontWeight": 500,
+        "color": "#1a1a1a",
+        "align": "left",
+        "baseline": "bottom",
+        "lineBreak": "|"
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "text":      {"field": "label"}
+      }
+    },
+
+    {
+      "data": {"name": "act_leader_line"},
+      "mark": {
+        "type": "line",
+        "color": "#1a1a1a",
+        "strokeWidth": 0.8
+      },
+      "encoding": {
+        "longitude": {"field": "lon", "type": "quantitative"},
+        "latitude":  {"field": "lat", "type": "quantitative"},
+        "order": {"value": 1}
       }
     }
   ]
